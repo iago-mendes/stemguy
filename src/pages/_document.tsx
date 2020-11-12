@@ -17,10 +17,10 @@ export default class MyDocument extends Document {
 				
 				const initialProps = await Document.getInitialProps(ctx)
 				return {...initialProps, styles: (
-					<>
-					{initialProps.styles}
-					{sheet.getStyleElement()}
-					</>
+						<>
+							{initialProps.styles}
+							{sheet.getStyleElement()}
+						</>
 					)}
 				}
 				finally
@@ -32,14 +32,14 @@ export default class MyDocument extends Document {
 			render(): JSX.Element {
 				return (
 					<Html lang="en">
-					<Head>
-					<meta charSet="utf-8" />
-					<link rel="icon" href="/favicon.svg" />
-					</Head>
-					<body>
-					<Main />
-					<NextScript />
-					</body>
+						<Head>
+							<meta charSet="utf-8" />
+							<link rel="icon" href="/favicon.svg" />
+						</Head>
+						<body>
+							<Main />
+							<NextScript />
+						</body>
 					</Html>
 					)
 				}
