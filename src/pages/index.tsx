@@ -3,7 +3,7 @@ import Head from 'next/head'
 const Home: React.FC = () =>
 {
 	return (
-		<div>
+		<div className="page">
 			<Head>
 				<title>STEM Guy</title>
 			</Head>
