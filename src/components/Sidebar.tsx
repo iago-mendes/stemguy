@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
+import Router from 'next/router'
 
 import Container from '../styles/components/Sidebar'
 import logo from '../assets/logo.svg'
@@ -11,6 +12,7 @@ const Sidebar: React.FC = () =>
 	function handleFooterClick()
 	{
 		if (!isClicked) setIsClicked(!isClicked)
+		else Router.push('/search')
 	}
 
   return (
@@ -18,9 +20,9 @@ const Sidebar: React.FC = () =>
 			isClicked={isClicked}
 			onClick={e => (String(e.target).includes('HTMLDivElement')) && setIsClicked(!isClicked)}
 		>
-			<img src={logo} alt="STEM Guy" title="Home" onClick={() => {}}/>
+			<img src={logo} alt="STEM Guy" title="Home" onClick={() => Router.push('/')}/>
 
-			<footer onClick={handleFooterClick}>
+			<footer title='Search' onClick={handleFooterClick}>
 				<FaSearch size={25} className="searchIcon" />
 				{isClicked && (
 						<input autoFocus />

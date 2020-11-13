@@ -8,7 +8,7 @@ const Home: React.FC = () =>
 				<title>STEM Guy</title>
 			</Head>
 
-			<h1>Hi there!</h1>
+			<h1>Home</h1>
 		</div>
 	)
 }
