@@ -31,6 +31,8 @@ interface PostProps
 
 const Post: React.FC<PostProps> = ({post}) =>
 {	
+	if (!post) return <h1>Carregando...</h1>
+
 	return (
 		<div className="page">
 			<Head>
