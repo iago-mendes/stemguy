@@ -28,5 +28,6 @@ export default createGlobalStyle`
 		height: 100vh;
     width: 100%;
     overflow-y: auto;
+		overflow-x: hidden;
 	}
 `
