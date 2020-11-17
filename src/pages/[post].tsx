@@ -2,10 +2,14 @@ import {GetStaticPaths, GetStaticProps} from 'next'
 import Head from "next/head"
 import Image from 'next/image'
 import {FiCalendar, FiClock} from 'react-icons/fi'
+import Markdown from 'react-showdown'
+import {useRouter} from 'next/router'
 
 import api from '../services/api'
 import Container from '../styles/pages/[post]'
 import Img from '../components/Img'
+import Loading from '../components/Loading'
+import NotFound from '../components/NotFound'
 
 interface PostProps
 {
@@ -35,12 +39,16 @@ interface PostProps
 
 const Post: React.FC<PostProps> = ({post}) =>
 {
-	if (!post) return <h1>Carregando...</h1>
+	const {isFallback} = useRouter()
+
+	if (isFallback) return <Loading />
+	else if(!post) <NotFound />
 
 	return (
 		<Container className="page">
 			<Head>
 				<title>{post.title} | STEM Guy</title>
+				<meta name='description' content={post.description} />
 			</Head>
 
 			<header>
@@ -70,7 +78,9 @@ const Post: React.FC<PostProps> = ({post}) =>
 				<main>
 					<p className="description">{post.description}</p>
 					<Img image={post.image} width={300} height={200} />
-					<p>{post.markdown}</p>
+					<div className="markdown">
+						<Markdown markdown={post.markdown} options={{openLinksInNewWindow: true}} />
+					</div>
 				</main>
 				<aside>
 					Advertisement

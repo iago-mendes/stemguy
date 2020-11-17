@@ -117,10 +117,36 @@ const Container = styled.div`
 				max-width: 80%;
 			}
 
-			p
+			.markdown
 			{
 				font-size: 1.5rem;
 				font-family: Roboto;
+
+				div
+				{
+					display: flex;
+					flex-direction: column;
+					gap: 1rem;
+				}
+
+				ol, ul
+				{
+					margin-left: 5rem;
+				}
+
+				a
+				{
+					text-decoration: none;
+					color: ${p => p.theme.colors.primary};
+
+					transition: 0.25s;
+
+					:hover
+					{
+						/* transform: scale(1.01); */
+						font-size: 1.6rem;
+					}
+				}
 			}
 		}
 
