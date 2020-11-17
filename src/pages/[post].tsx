@@ -5,6 +5,7 @@ import {FiCalendar, FiClock} from 'react-icons/fi'
 
 import api from '../services/api'
 import Container from '../styles/pages/[post]'
+import Img from '../components/Img'
 
 interface PostProps
 {
@@ -24,8 +25,8 @@ interface PostProps
 		{
 			url: string
 			alt: string
-			credit: string
-			creditLink: string
+			credit?: string
+			creditLink?: string
 		}
 		markdown: string
 		flags: Array<{name: string, color: string}>
@@ -68,10 +69,12 @@ const Post: React.FC<PostProps> = ({post}) =>
 			<div className="mainContainer">
 				<main>
 					<p className="description">{post.description}</p>
-					<Image src={post.image.url} alt={post.image.alt} width={500} height={300} layout="intrinsic" />
+					<Img image={post.image} width={300} height={200} />
 					<p>{post.markdown}</p>
 				</main>
-				<aside></aside>
+				<aside>
+					Advertisement
+				</aside>
 			</div>
 		</Container>
 	)

@@ -92,6 +92,43 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	.mainContainer
+	{
+		display: flex;
+
+		main
+		{
+			width: calc(100% - 350px);
+			padding: 2rem;
+
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+
+			.description
+			{
+				font-size: 2rem;
+				font-family: Roboto;
+			}
+
+			img
+			{
+				max-width: 80%;
+			}
+
+			p
+			{
+				font-size: 1.5rem;
+				font-family: Roboto;
+			}
+		}
+
+		aside
+		{
+			width: 350px;
+		}
+	}
 `
 
 export default Container
