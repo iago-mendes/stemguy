@@ -6,6 +6,7 @@ const Home: React.FC = () =>
 		<div className="page">
 			<Head>
 				<title>STEM Guy</title>
+				<meta name='thumbnail' content='/logo.svg' />
 			</Head>
 
 			<h1>Home</h1>

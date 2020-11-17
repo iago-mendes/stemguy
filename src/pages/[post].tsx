@@ -49,6 +49,7 @@ const Post: React.FC<PostProps> = ({post}) =>
 			<Head>
 				<title>{post.title} | STEM Guy</title>
 				<meta name='description' content={post.description} />
+				<meta name='thumbnail' content={post.image.url} />
 			</Head>
 
 			<header>

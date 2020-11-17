@@ -6,6 +6,7 @@ export default function Search()
 		<div className="page">
 			<Head>
 				<title>Search | STEM Guy</title>
+				<meta name='thumbnail' content='/logo.svg' />
 			</Head>
 			
 			<h1>Search</h1>
