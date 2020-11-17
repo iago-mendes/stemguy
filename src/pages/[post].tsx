@@ -1,14 +1,17 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import Head from "next/head";
+import Head from "next/head"
+import Image from 'next/image'
+import {FiCalendar, FiClock} from 'react-icons/fi'
 
-import api from '../services/api';
+import api from '../services/api'
+import Container from '../styles/pages/[post]'
 
 interface PostProps
 {
 	post:
 	{
 		title: string
-  	date: Date
+  	date: string
   	time: number
 		author:
 		{
@@ -30,19 +33,47 @@ interface PostProps
 }
 
 const Post: React.FC<PostProps> = ({post}) =>
-{	
+{
 	if (!post) return <h1>Carregando...</h1>
 
 	return (
-		<div className="page">
+		<Container className="page">
 			<Head>
 				<title>{post.title} | STEM Guy</title>
 			</Head>
-		
-			<h1>{post.title}</h1>
-			<img src={post.image.url} alt={post.image.alt} style={{width: 500}} />
-			<p>{post.markdown}</p>
-		</div>
+
+			<header>
+				<h1>{post.title}</h1>
+				<div className="info">
+					<div className="calendarTime">
+						<span>
+							<FiCalendar size={25} />
+							<h3>{post.date}</h3>
+						</span>
+						<span>
+							<FiClock size={25} />
+							<h3>{post.time} minutes</h3>
+						</span>
+					</div>
+					<div className="author">
+						<h3>by</h3>
+						<span>
+							<h2>{post.author.name}</h2>
+							<Image src={post.author.image} alt={post.author.name} width={40} height={40} />
+						</span>
+					</div>
+				</div>
+			</header>
+
+			<div className="mainContainer">
+				<main>
+					<p className="description">{post.description}</p>
+					<Image src={post.image.url} alt={post.image.alt} width={500} height={300} layout="intrinsic" />
+					<p>{post.markdown}</p>
+				</main>
+				<aside></aside>
+			</div>
+		</Container>
 	)
 }
 
@@ -68,7 +99,8 @@ export const getStaticProps: GetStaticProps = async ctx =>
 	const {data} = await api.get(`posts/${post}`)
 	
 	return {
-		props: {post: data}
+		props: {post: data},
+		revalidate: 5
 	}
 }
 

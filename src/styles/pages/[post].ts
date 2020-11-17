@@ -1,0 +1,97 @@
+import styled from 'styled-components'
+
+const Container = styled.div`
+	header
+	{
+		border-bottom: rgba(123,123,123,0.25) 2px solid;
+
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+
+		padding: 1rem;
+		padding-left: 5rem;
+		padding-right: 5rem;
+
+		h1
+		{
+			font-size: 5rem;
+			font-family: Ubuntu;
+			font-weight: 700;
+		}
+
+		.info
+		{
+			width: 100%;
+
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			color: ${p => p.theme.colors.textLight};
+
+			.calendarTime
+			{
+				display: flex;
+				gap: 2rem;
+
+				span
+				{
+					display: flex;
+					align-items: center;
+					gap: 1rem;
+
+					h3
+					{
+						font-size: 1.5rem;
+						font-family: Ubuntu;
+						font-weight: 400;
+					}
+				}
+			}
+
+			.author
+			{
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+
+				h3
+				{
+					font-size: 1.5rem;
+					font-family: Ubuntu;
+					font-weight: 400;
+				}
+
+				span
+				{
+					background-color: #fff;
+
+					display: flex;
+					align-items: center;
+					gap: 1rem;
+
+					padding: 0.5rem;
+					border-radius: 25rem;
+
+					h2
+					{
+						font-size: 1.5rem;
+						color: ${p => p.theme.colors.text};
+
+						font-family: Ubuntu;
+						font-weight: 700;
+					}
+
+					img
+					{
+						border-radius: 25rem;
+					}
+				}
+			}
+		}
+	}
+`
+
+export default Container
