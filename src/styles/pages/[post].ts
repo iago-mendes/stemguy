@@ -163,6 +163,11 @@ const Container = styled.div`
 
 		aside
 		{
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			justify-content: space-around;
+
 			width: 350px;
 		}
 	}

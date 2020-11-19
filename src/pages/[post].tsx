@@ -10,6 +10,7 @@ import Container from '../styles/pages/[post]'
 import Img from '../components/Img'
 import Loading from '../components/Loading'
 import NotFound from '../components/NotFound'
+import Ad from '../components/Ad'
 
 interface PostProps
 {
@@ -95,7 +96,9 @@ const Post: React.FC<PostProps> = ({post}) =>
 					</div>
 				</main>
 				<aside>
-					Advertisement
+					<Ad width={160} height={600} />
+					<Ad width={250} height={250} />
+					<Ad width={300} height={250} />
 				</aside>
 			</div>
 		</Container>
