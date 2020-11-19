@@ -138,13 +138,24 @@ const Container = styled.div`
 				{
 					text-decoration: none;
 					color: ${p => p.theme.colors.primary};
-
-					transition: 0.25s;
+					font-weight: 700;
 
 					:hover
 					{
-						/* transform: scale(1.01); */
-						font-size: 1.6rem;
+						text-decoration: underline;
+					}
+				}
+
+				.imageLink
+				{
+					font-size: 1rem;
+					color: ${p => p.theme.colors.textLight};
+					font-weight: 400;
+
+					:hover
+					{
+						color: ${p => p.theme.colors.primary};
+						text-decoration: none;
 					}
 				}
 			}

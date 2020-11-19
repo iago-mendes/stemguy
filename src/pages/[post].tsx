@@ -78,9 +78,20 @@ const Post: React.FC<PostProps> = ({post}) =>
 			<div className="mainContainer">
 				<main>
 					<p className="description">{post.description}</p>
-					<Img image={post.image} width={300} height={200} />
+					<Img
+						url={post.image.url}
+						alt={post.image.alt}
+						credit={post.image.credit}
+						creditLink={post.image.creditLink}
+						width={300}
+						height={200}
+					/>
 					<div className="markdown">
-						<Markdown markdown={post.markdown} options={{openLinksInNewWindow: true}} />
+						<Markdown
+							markdown={post.markdown}
+							options={{openLinksInNewWindow: true}}
+							components={{Img}}
+						/>
 					</div>
 				</main>
 				<aside>

@@ -4,25 +4,22 @@ import Container from '../styles/components/Img'
 
 interface ImgProps
 {
-	image:
-	{
-		url: string
-		alt: string
-		credit?: string
-		creditLink?: string
-	}
+	url: string
+	alt: string
+	credit?: string
+	creditLink?: string
 	width: number
 	height: number
 }
 
-const Img: React.FC<ImgProps> = ({image, width, height}) =>
+const Img: React.FC<ImgProps> = ({url, alt, credit, creditLink, width, height}) =>
 {
 	return (
 		<Container>
 			<div className="center">
-				<Image src={image.url} alt={image.alt} width={width} height={height} layout="responsive" />
-				{image.credit && (
-					<a href={image.creditLink}>{image.credit}</a>
+				<Image src={url} alt={alt} width={Number(width)} height={Number(height)} layout="responsive" />
+				{credit && (
+					<a target="_blank" href={creditLink} className='imageLink' >{credit}</a>
 				)}
 			</div>
 		</Container>
