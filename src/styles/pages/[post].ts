@@ -169,6 +169,8 @@ const Container = styled.div`
 			justify-content: space-around;
 
 			width: 350px;
+
+			overflow: hidden;
 		}
 	}
 `

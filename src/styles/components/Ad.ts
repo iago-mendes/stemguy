@@ -7,33 +7,49 @@ interface ContainerProps
 }
 
 const Container = styled.div<ContainerProps>`
-	border: ${p => p.theme.colors.primary} solid 1px;
-	border-radius: 0.5rem;
-
-	width: fit-content;
-	height: fit-content;
-
-	padding: 0.5rem;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
-	h1
+	
+	.center
 	{
-		margin-top: -10px;
-		background-color: ${p => p.theme.colors.background};
+		border: ${p => p.theme.colors.primary} solid 1px;
+		border-radius: 0.5rem;
 
-		padding-left: 1rem;
-		padding-right: 1rem;
+		width: fit-content;
+		height: fit-content;
 
-		font-family: Roboto;
-		font-size: 1rem;
-	}
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 
-	.ad
-	{
-		background-color: green;
+		position: relative;
+		margin: 1rem;
+
+		h1
+		{
+			position: absolute;
+			top: 5px;
+			z-index: 1;
+
+			margin-top: -10px;
+			background-color: ${p => p.theme.colors.background};
+
+			padding-left: 1rem;
+			padding-right: 1rem;
+
+			font-family: Roboto;
+			font-size: 1rem;
+		}
+
+		.ad
+		{
+			z-index: 2;
+
+			background-color: green;
+			margin: 0.5rem;
+		}
 	}
 `
 

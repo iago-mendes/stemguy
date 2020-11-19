@@ -10,7 +10,7 @@ import Container from '../styles/pages/[post]'
 import Img from '../components/Img'
 import Loading from '../components/Loading'
 import NotFound from '../components/NotFound'
-import Ad from '../components/Ad'
+import Ad, {HorizontalAd} from '../components/Ad'
 
 interface PostProps
 {
@@ -91,7 +91,7 @@ const Post: React.FC<PostProps> = ({post}) =>
 						<Markdown
 							markdown={post.markdown}
 							options={{openLinksInNewWindow: true}}
-							components={{Img}}
+							components={{Img, HorizontalAd}}
 						/>
 					</div>
 				</main>
