@@ -3,12 +3,13 @@ import styled from "styled-components";
 interface ContainerProps
 {
 	isClicked: boolean
+	scrollingDown: boolean
 }
 
 const Container = styled.div<ContainerProps>`
   background-color: ${props => props.theme.colors.primary};
   height: 100vh;
-  width: ${props => props.isClicked ? '35rem' : '5rem'};
+  width: ${props => props.isClicked ? '20rem' : '5rem'};
 
 	display: flex;
 	flex-direction: column;
@@ -17,7 +18,6 @@ const Container = styled.div<ContainerProps>`
 
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	${p => p.isClicked ? 'padding: 2rem' : ''};
 
 	cursor: pointer;
 	transition: 0.25s;
@@ -28,8 +28,8 @@ const Container = styled.div<ContainerProps>`
 		border-radius: 100%;
 		padding: 5px;
 
-		width: ${props => props.isClicked ? '30rem' : '4rem'};
-		height: ${props => props.isClicked ? '30rem' : '4rem'};
+		width: ${props => props.isClicked ? '15rem' : '4rem'};
+		height: ${props => props.isClicked ? '15rem' : '4rem'};
 
 		transition: 0.25s;
 
@@ -54,13 +54,13 @@ const Container = styled.div<ContainerProps>`
 		gap: 0.5rem;
 
 		height: 4rem;
-		width: ${p => p.isClicked ? '80%' : '4rem'};
+		width: ${p => p.isClicked ? '90%' : '4rem'};
 
 		transition: 0.25s;
 
 		:hover
 		{
-			transform: scale(1.1);
+			transform: ${props => props.isClicked ? 'scale(1.05)' : 'scale(1.1)'};
 		}
 
 		input
@@ -70,6 +70,8 @@ const Container = styled.div<ContainerProps>`
 
 			outline: none;
 			border: none;
+
+			font-family: Ubuntu;
 		}
 	}
 
@@ -81,6 +83,11 @@ const Container = styled.div<ContainerProps>`
 		flex-direction: row;
 		padding-left: 2rem;
 		padding-right: 2rem;
+
+		position: fixed;
+		z-index: 100;
+
+		top: ${p => p.scrollingDown ? '-5rem' : '0'};
 
 		img
 		{

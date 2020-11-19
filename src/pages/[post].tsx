@@ -50,7 +50,7 @@ const Post: React.FC<PostProps> = ({post}) =>
 
 	useEffect(() =>
 	{
-		setInDesktop(window.innerWidth >= 1450)
+		setInDesktop(window.innerWidth >= 1270)
 		setGettingWidth(false)
 	}, [])
 

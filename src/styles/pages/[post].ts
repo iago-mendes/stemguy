@@ -180,6 +180,38 @@ const Container = styled.div<ContainerProps>`
 			overflow: hidden;
 		}
 	}
+
+	@media (max-width: 700px)
+	{
+		header
+		{
+			padding: 1rem;
+			gap: 1rem;
+
+			h1
+			{
+				font-size: 4rem;
+			}
+
+			.info
+			{
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 1rem;
+
+				.calendarTime
+				{
+					flex-direction: column;
+					gap: 1rem;
+				}
+
+				.author
+				{
+					margin-left: 0.5rem;
+				}
+			}
+		}
+	}
 `
 
 export default Container

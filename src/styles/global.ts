@@ -37,5 +37,13 @@ export default createGlobalStyle`
 		{
 			flex-direction: column;
 		}
+
+		.page
+		{
+			height: 100%;
+			width: 100vw;
+
+			margin-top: 5rem;
+		}
 	}
 `

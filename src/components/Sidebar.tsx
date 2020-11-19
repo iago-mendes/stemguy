@@ -10,7 +10,25 @@ const Sidebar: React.FC = () =>
 	const [isClicked, setIsClicked] = useState(false)
 	const [inMobile, setInMobile] = useState(false)
 
-	useEffect(() => setInMobile(window.innerWidth <= 1100), [])
+	const [scrollingDown, setScrollingDown] = useState(false)
+	let previousScroll = 0
+	let scroll = 0
+
+	useEffect(() =>
+	{
+		setInMobile(window.innerWidth <= 1100)
+
+		previousScroll = window.pageYOffset
+		window.onscroll = handleScroll
+	}, [])
+
+	function handleScroll()
+	{
+		scroll = window.pageYOffset
+		const isScrollingDown = scroll - previousScroll > 0
+		setScrollingDown(isScrollingDown)
+		previousScroll = scroll
+	}
 
 	function handleFooterClick()
 	{
@@ -21,6 +39,7 @@ const Sidebar: React.FC = () =>
   return (
 		<Container
 			isClicked={isClicked}
+			scrollingDown={scrollingDown}
 			onClick={e => (String(e.target).includes('HTMLDivElement') && !inMobile) && setIsClicked(!isClicked)}
 		>
 			<img src={logo} alt="STEM Guy" title="Home" onClick={() => Router.push('/')}/>
