@@ -30,4 +30,12 @@ export default createGlobalStyle`
     overflow-y: auto;
 		overflow-x: hidden;
 	}
+
+	@media (max-width: 1100px)
+	{
+		#__next
+		{
+			flex-direction: column;
+		}
+	}
 `

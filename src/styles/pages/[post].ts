@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
+interface ContainerProps
+{
+	inDesktop: boolean
+}
+
+const Container = styled.div<ContainerProps>`
 	header
 	{
 		border-bottom: rgba(123,123,123,0.25) 2px solid;
@@ -99,7 +104,9 @@ const Container = styled.div`
 
 		main
 		{
-			width: calc(100% - 350px);
+			width: ${p => p.inDesktop ? 'calc(100% - 350px)' : '100%'};
+			/* width: calc(100% - 350px); */
+			/* width: 100%; */
 			padding: 2rem;
 
 			display: flex;

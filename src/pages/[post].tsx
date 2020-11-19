@@ -4,6 +4,7 @@ import Image from 'next/image'
 import {FiCalendar, FiClock} from 'react-icons/fi'
 import Markdown from 'react-showdown'
 import {useRouter} from 'next/router'
+import {useEffect, useState} from 'react'
 
 import api from '../services/api'
 import Container from '../styles/pages/[post]'
@@ -41,12 +42,22 @@ interface PostProps
 const Post: React.FC<PostProps> = ({post}) =>
 {
 	const {isFallback} = useRouter()
+	const [inDesktop, setInDesktop] = useState(true)
+	const [gettingWidth, setGettingWidth] = useState(true)
 
 	if (isFallback) return <Loading />
 	else if(!post) <NotFound />
 
+	useEffect(() =>
+	{
+		setInDesktop(window.innerWidth >= 1450)
+		setGettingWidth(false)
+	}, [])
+
+	if (gettingWidth) return <Loading />
+
 	return (
-		<Container className="page">
+		<Container inDesktop={inDesktop} className="page">
 			<Head>
 				<title>{post.title} | STEM Guy</title>
 				<meta name='description' content={post.description} />
@@ -95,11 +106,13 @@ const Post: React.FC<PostProps> = ({post}) =>
 						/>
 					</div>
 				</main>
-				<aside>
-					<Ad width={160} height={600} />
-					<Ad width={250} height={250} />
-					<Ad width={300} height={250} />
-				</aside>
+				{inDesktop && (
+					<aside>
+						<Ad width={160} height={600} />
+						<Ad width={250} height={250} />
+						<Ad width={300} height={250} />
+					</aside>
+				)}
 			</div>
 		</Container>
 	)

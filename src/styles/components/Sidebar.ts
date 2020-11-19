@@ -72,6 +72,27 @@ const Container = styled.div<ContainerProps>`
 			border: none;
 		}
 	}
+
+	@media (max-width: 1100px)
+	{
+		height: 5rem;
+		width: 100vw;
+
+		flex-direction: row;
+		padding-left: 2rem;
+		padding-right: 2rem;
+
+		img
+		{
+			width: 4rem;
+			height: 4rem;
+		}
+
+		footer
+		{
+			width: 4rem;
+		}
+	}
 `
 
 export default Container
