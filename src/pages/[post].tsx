@@ -46,7 +46,7 @@ const Post: React.FC<PostProps> = ({post}) =>
 	const [gettingWidth, setGettingWidth] = useState(true)
 
 	if (isFallback) return <Loading />
-	else if(!post) <NotFound />
+	else if(!post) return <NotFound />
 
 	useEffect(() =>
 	{

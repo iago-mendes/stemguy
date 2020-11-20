@@ -30,10 +30,9 @@ const Container = styled.div<ContainerProps>`
 		h1
 		{
 			position: absolute;
-			top: 5px;
+			top: -7px;
 			z-index: 1;
 
-			margin-top: -10px;
 			background-color: ${p => p.theme.colors.background};
 
 			padding-left: 1rem;
