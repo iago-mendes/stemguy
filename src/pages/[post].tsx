@@ -56,6 +56,17 @@ const Post: React.FC<PostProps> = ({post}) =>
 
 	if (gettingWidth) return <Loading />
 
+	function formatDate(hash: string)
+	{
+		const months =
+		[
+			'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+		]
+		const date = hash.split('T')[0].split('-').map(s => Number(s))
+		const formatedDate = `${months[date[1]-1]} ${date[2]}, ${date[0]}`
+		return formatedDate
+	}
+
 	return (
 		<Container inDesktop={inDesktop} className="page">
 			<Head>
@@ -70,7 +81,7 @@ const Post: React.FC<PostProps> = ({post}) =>
 					<div className="calendarTime">
 						<span>
 							<FiCalendar size={25} />
-							<h3>{post.date}</h3>
+							<h3>{formatDate(post.date)}</h3>
 						</span>
 						<span>
 							<FiClock size={25} />
