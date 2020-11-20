@@ -39,7 +39,7 @@ const Container = styled.div<ContainerProps>`
 		}
 	}
 
-	footer
+	form
 	{
 
 		background-color: #fff;
@@ -95,7 +95,7 @@ const Container = styled.div<ContainerProps>`
 			height: 4rem;
 		}
 
-		footer
+		form
 		{
 			width: 4rem;
 		}

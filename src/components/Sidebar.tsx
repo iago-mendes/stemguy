@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {FormEvent, useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
 import Router from 'next/router'
 
@@ -7,6 +7,8 @@ import logo from '../assets/logo.svg'
 
 const Sidebar: React.FC = () =>
 {
+	const [search, setSearch] = useState('')
+
 	const [isClicked, setIsClicked] = useState(false)
 	const [inMobile, setInMobile] = useState(false)
 
@@ -30,10 +32,23 @@ const Sidebar: React.FC = () =>
 		previousScroll = scroll
 	}
 
-	function handleFooterClick()
+	function handleSearchClick()
 	{
-		if (inMobile || isClicked) Router.push('/search')
-		else setIsClicked(!isClicked)
+		if (!inMobile && !isClicked) setIsClicked(!isClicked)
+		else
+		{
+			Router.push(`/?search=${search}`)
+			setSearch('')
+			setIsClicked(!isClicked)
+		}
+	}
+
+	function handleSearchSubmit(e: FormEvent)
+	{
+		e.preventDefault()
+		Router.push(`/?search=${search}`)
+		setSearch('')
+		setIsClicked(!isClicked)
 	}
 
   return (
@@ -44,12 +59,12 @@ const Sidebar: React.FC = () =>
 		>
 			<img src={logo} alt="STEM Guy" title="Home" onClick={() => Router.push('/')}/>
 
-			<footer title='Search' onClick={handleFooterClick}>
+			<form title='Search' onClick={handleSearchClick} onSubmit={handleSearchSubmit}>
 				<FaSearch size={25} className="searchIcon" />
 				{(isClicked && !inMobile) && (
-					<input autoFocus />
+					<input autoFocus value={search} onChange={e => setSearch(e.target.value)} />
 				)}
-			</footer>
+			</form>
     </Container>
   )
 }
