@@ -1,10 +1,14 @@
-import { GetStaticProps } from 'next'
+import {GetStaticProps} from 'next'
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
+import Image from 'next/image'
+import {FaSearch} from 'react-icons/fa'
 
 import Loading from '../components/Loading'
 import api from '../services/api'
+import logo from '../assets/logoDarked.svg'
+import Container from '../styles/pages/index'
 
 interface Post
 {
@@ -43,14 +47,23 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	if (error) return <h1>failed to load data</h1>
 
 	return (
-		<div className="page">
+		<Container className='page'>
 			<Head>
 				<title>STEM Guy</title>
 				<meta name='thumbnail' content='/logo.svg' />
 			</Head>
 
 			<header>
-				<input type="text" value={search} onChange={e => setSearch(e.target.value)} />
+				<div className='nameLogo'>
+					<h1>STEM Guy</h1>
+					<div className="img">
+						<Image src={logo} alt='STEM Guy' width={300} height={300} layout='intrinsic' />
+					</div>
+				</div>
+				<div className='input'>
+					<FaSearch size={25} />
+					<input type='text' value={search} onChange={e => setSearch(e.target.value)} />
+				</div>
 			</header>
 
 			<main>
@@ -62,7 +75,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 						: posts.map(post => post.title)
 				}
 			</main>
-		</div>
+		</Container>
 	)
 }
 
