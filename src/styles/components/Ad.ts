@@ -46,7 +46,7 @@ const Container = styled.div<ContainerProps>`
 		{
 			z-index: 2;
 
-			background-color: green;
+			/* background-color: green; */
 			margin: 0.5rem;
 		}
 	}

@@ -17,7 +17,7 @@ const Img: React.FC<ImgProps> = ({url, alt, credit, creditLink, width, height}) 
 	return (
 		<Container>
 			<div className="center">
-				<Image src={url} alt={alt} width={Number(width)} height={Number(height)} layout="responsive" />
+				<Image src={url} alt={alt} width={width} height={height} layout="responsive" />
 				{credit && (
 					<a target="_blank" href={creditLink} className='imageLink' >{credit}</a>
 				)}

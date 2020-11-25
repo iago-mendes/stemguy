@@ -33,6 +33,8 @@ interface PostProps
 			alt: string
 			credit?: string
 			creditLink?: string
+			width: number
+			height: number
 		}
 		markdown: string
 		flags: Array<{name: string, color: string}>
@@ -106,8 +108,8 @@ const Post: React.FC<PostProps> = ({post}) =>
 						alt={post.image.alt}
 						credit={post.image.credit}
 						creditLink={post.image.creditLink}
-						width={300}
-						height={200}
+						width={post.image.width}
+						height={post.image.height}
 					/>
 					<div className="markdown">
 						<Markdown
