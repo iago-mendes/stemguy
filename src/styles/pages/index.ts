@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	
+	overflow-y: hidden;
+
 	header
 	{
 		display: flex;
@@ -52,6 +53,7 @@ const Container = styled.div`
 		{
 			height: 5rem;
 			width: 75rem;
+			z-index: 2;
 
 			border-radius: 10rem;
 			border: ${p => p.theme.colors.primary} 2px solid;
@@ -79,8 +81,50 @@ const Container = styled.div`
 				width: 100%;
 
 				font-family: Ubuntu;
+				font-weight: 700;
 				font-size: 2rem;
 				color: ${p => p.theme.colors.primary};
+			}
+		}
+	}
+
+	.scroll
+	{
+		width: 100%;
+		height: 50vh;
+		overflow-y: auto;
+
+		main
+		{
+			padding: 5rem;
+			height: fit-content;
+
+			display: grid;
+			grid-auto-rows: 30rem;
+			grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+			grid-gap: 2rem;
+			align-items: center;
+			justify-items: center;
+
+			.post
+			{
+				background-color: #fff;
+				width: 100%;
+				height: 100%;
+
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 1rem;
+
+				padding: 1rem;
+				border-radius: 2rem;
+
+				.imgContainer
+				{
+					width: 50%;
+					z-index: 1;
+				}			
 			}
 		}
 	}

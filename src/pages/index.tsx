@@ -16,7 +16,13 @@ interface Post
 	url_id: string
 	title: string
 	description: string
-	image: string
+	image:
+	{
+		url: string
+		alt: string
+		width: number
+		height: number
+	}
 	flags: Array<
 	{
 		name: string
@@ -39,9 +45,6 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	{
 		if (search === '') setPosts(staticPosts)
 		else if (data) setPosts(data.posts)
-
-		if (data) console.log('[data]', data.posts)
-		console.log('[search]', search)
 	}, [data, search])
 
 	if (error) return <h1>failed to load data</h1>
@@ -57,24 +60,39 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 				<div className='nameLogo'>
 					<h1>STEM Guy</h1>
 					<div className="img">
-						<Image src={logo} alt='STEM Guy' width={300} height={300} layout='intrinsic' />
+						<Image src={logo} alt='STEM Guy' width={300} height={300} layout='intrinsic' priority />
 					</div>
 				</div>
 				<div className='input'>
 					<FaSearch size={25} />
-					<input type='text' value={search} onChange={e => setSearch(e.target.value)} />
+					<input type='text' value={search} onChange={e => setSearch(e.target.value)} placeholder='Search for a topic' />
 				</div>
 			</header>
 
-			<main>
-				{
-					!data
-					? <Loading />
-					: posts.length === 0
-						? <h1>No results found!</h1>
-						: posts.map(post => post.title)
-				}
-			</main>
+			<div className="scroll">
+				<main>
+					{
+						!data
+						? <Loading />
+						: posts.length === 0
+							? <h1>No results found!</h1>
+							: posts.map(post => (
+								<div className="post">
+									<div className="imgContainer">
+										<Image src={post.image.url} alt={post.image.alt} width={post.image.width} height={post.image.height} />
+									</div>
+									<h1>{post.title}</h1>
+									<p>{post.description}</p>
+									<ul>
+										{post.flags.map(flag => (
+											<li key={flag.name} style={{backgroundColor: `#${flag.color}`}} >{flag.name}</li>
+										))}
+									</ul>
+								</div>
+							))
+					}
+				</main>
+			</div>
 		</Container>
 	)
 }
