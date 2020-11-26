@@ -38,9 +38,9 @@ interface HomeProps
 
 const Home: React.FC<HomeProps> = ({staticPosts}) =>
 {
+	const Router = useRouter()
 	const [search, setSearch] = useState('')
 	const [posts, setPosts] = useState<Post[]>([])
-	const Router = useRouter()
 	const {data, error} = useSWR(`/api/search?q=${search}`)
 
 	useEffect(() =>
@@ -89,7 +89,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 						: posts.length === 0
 							? <h1>No results found!</h1>
 							: posts.map(post => (
-								<div className="post">
+								<div className="post" onClick={() => Router.push(`/${post.url_id}`)}>
 									<div className="imgContainer">
 										<Image src={post.image.url} alt={post.image.alt} width={post.image.width} height={post.image.height} />
 									</div>
