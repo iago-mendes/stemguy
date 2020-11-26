@@ -9,6 +9,7 @@ import Loading from '../components/Loading'
 import api from '../services/api'
 import logo from '../assets/logoDarked.svg'
 import Container from '../styles/pages/index'
+import { useRouter } from 'next/router'
 
 interface Post
 {
@@ -39,7 +40,18 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 {
 	const [search, setSearch] = useState('')
 	const [posts, setPosts] = useState<Post[]>([])
+	const Router = useRouter()
 	const {data, error} = useSWR(`/api/search?q=${search}`)
+
+	useEffect(() =>
+	{
+		if (Router)
+		{
+			const {search: q} = Router.query
+			if (q)
+				setSearch(String(q))
+		}
+	}, [])
 
 	useEffect(() =>
 	{
