@@ -10,7 +10,7 @@ const Container = styled.div`
 		flex-direction: column;
 
 		width: 100%;
-		height: 50vh;
+		height: 30vh;
 
 		background-color: ${p => p.theme.colors.primary};
 
@@ -27,7 +27,7 @@ const Container = styled.div`
 
 			h1
 			{
-				font-size: 7.5rem;
+				font-size: 6rem;
 				font-family: Aladin;
 
 				color: ${p => p.theme.colors.background};
@@ -36,16 +36,11 @@ const Container = styled.div`
 			.img
 			{
 				height: 90%;
-				width: calc(50vh * 0.85 * 0.9);
+				width: calc(30vh * 0.85 * 0.9);
 
 				display: flex;
 				align-items: center;
 				justify-content: center;
-
-				svg
-				{
-					
-				}
 			}
 		}
 
@@ -92,7 +87,7 @@ const Container = styled.div`
 	.scroll
 	{
 		width: 100%;
-		height: 50vh;
+		height: 70vh;
 		overflow-y: auto;
 
 		main
@@ -112,7 +107,7 @@ const Container = styled.div`
 				z-index: 1;
 
 				background-color: #fff;
-				width: 100%;
+				width: fit-content;
 				height: 100%;
 
 				display: flex;
@@ -185,6 +180,43 @@ const Container = styled.div`
 						font-size: 1rem;
 					}
 				}
+			}
+		}
+	}
+
+	@media(max-width: 1100px)
+	{
+		header
+		{
+			height: 20vh;
+
+			.nameLogo
+			{
+				h1
+				{
+					font-size: 4rem;
+				}
+
+				.img
+				{
+					width: calc(20vh * 0.85 * 0.9);
+				}
+			}
+
+			.input
+			{
+				width: 75%;
+			}
+		}
+
+		.scroll
+		{
+			height: calc(80vh - 5rem);
+
+			main
+			{
+				padding: 2rem;
+				padding-top: 4rem;
 			}
 		}
 	}

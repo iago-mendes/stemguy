@@ -81,6 +81,7 @@ const Container = styled.div<ContainerProps>`
 		width: 100vw;
 
 		flex-direction: row;
+		padding: 0;
 		padding-left: 2rem;
 		padding-right: 2rem;
 

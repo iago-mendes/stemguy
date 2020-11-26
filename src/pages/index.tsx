@@ -42,7 +42,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	const [search, setSearch] = useState('')
 	const [posts, setPosts] = useState<Post[]>([])
 	const {data, error} = useSWR(`/api/search?q=${search}`)
-
+	
 	useEffect(() =>
 	{
 		if (Router)
