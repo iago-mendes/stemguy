@@ -89,9 +89,9 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 						: posts.length === 0
 							? <h1>No results found!</h1>
 							: posts.map(post => (
-								<div className="post" onClick={() => Router.push(`/${post.url_id}`)}>
+								<div className="post" key={post.id} onClick={() => Router.push(`/${post.url_id}`)}>
 									<div className="imgContainer">
-										<Image src={post.image.url} alt={post.image.alt} width={post.image.width} height={post.image.height} />
+										<img src={post.image.url} alt={post.image.alt} />
 									</div>
 									<h1>{post.title}</h1>
 									<p>{post.description}</p>

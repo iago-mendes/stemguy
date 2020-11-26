@@ -51,9 +51,10 @@ const Container = styled.div`
 
 		.input
 		{
+			z-index: 2;
+
 			height: 5rem;
 			width: 75rem;
-			z-index: 2;
 
 			border-radius: 10rem;
 			border: ${p => p.theme.colors.primary} 2px solid;
@@ -108,6 +109,8 @@ const Container = styled.div`
 
 			.post
 			{
+				z-index: 1;
+
 				background-color: #fff;
 				width: 100%;
 				height: 100%;
@@ -120,11 +123,68 @@ const Container = styled.div`
 				padding: 1rem;
 				border-radius: 2rem;
 
+				cursor: pointer;
+				transition: 0.25s;
+
+				:hover
+				{
+					transform: scale(1.01);
+					box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+				}
+
 				.imgContainer
 				{
-					width: 50%;
-					z-index: 1;
-				}			
+					width: 100%;
+					height: 50%;
+
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					img
+					{
+						height: 100%;
+					}
+				}
+
+				h1
+				{
+					max-height: 10%;
+
+					font-family: Ubuntu;
+					font-size: 2rem;
+				}
+
+				p
+				{
+					max-height: 20%;
+
+					font-family: Roboto;
+					font-size: 1rem;
+				}
+
+				ul
+				{
+					display: flex;
+					align-items: center;
+					justify-content: space-around;
+
+					height: 20%;
+					width: 100%;
+					padding: 1rem;
+
+					li
+					{
+						list-style: none;
+
+						font-family: Ubuntu;
+						color: #fff;
+						border-radius: 100rem;
+
+						padding: 0.5rem;
+						font-size: 1rem;
+					}
+				}
 			}
 		}
 	}
