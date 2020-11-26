@@ -81,30 +81,32 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 				</div>
 			</header>
 
-			<div className="scroll">
-				<main>
-					{
-						!data
-						? <Loading />
-						: posts.length === 0
-							? <h1>No results found!</h1>
-							: posts.map(post => (
-								<div className="post" key={post.id} onClick={() => Router.push(`/${post.url_id}`)}>
-									<div className="imgContainer">
-										<img src={post.image.url} alt={post.image.alt} />
+			{
+				!data
+				? <Loading style={{height: '50%'}} />
+				: posts.length === 0
+					? <h1>No results found!</h1>
+					: (
+						<div className="scroll">
+							<main>
+								{posts.map(post => (
+									<div className="post" key={post.id} onClick={() => Router.push(`/${post.url_id}`)}>
+										<div className="imgContainer">
+											<img src={post.image.url} alt={post.image.alt} />
+										</div>
+										<h1>{post.title}</h1>
+										<p>{post.description}</p>
+										<ul>
+											{post.flags.map(flag => (
+												<li key={flag.name} style={{backgroundColor: `#${flag.color}`}} >{flag.name}</li>
+											))}
+										</ul>
 									</div>
-									<h1>{post.title}</h1>
-									<p>{post.description}</p>
-									<ul>
-										{post.flags.map(flag => (
-											<li key={flag.name} style={{backgroundColor: `#${flag.color}`}} >{flag.name}</li>
-										))}
-									</ul>
-								</div>
-							))
-					}
-				</main>
-			</div>
+								))}
+							</main>
+						</div>
+					)
+			}
 		</Container>
 	)
 }

@@ -21,6 +21,9 @@ export default createGlobalStyle`
   #__next
   {
     display: flex;
+
+		width: 100vw;
+		height: 100vh;
   }
 
 	.page
