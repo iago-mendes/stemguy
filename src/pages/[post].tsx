@@ -43,7 +43,7 @@ interface PostProps
 
 const Post: React.FC<PostProps> = ({post}) =>
 {
-	const {isFallback} = useRouter()
+	const {isFallback, query} = useRouter()
 	const [inDesktop, setInDesktop] = useState(true)
 	const [gettingWidth, setGettingWidth] = useState(true)
 
@@ -75,6 +75,16 @@ const Post: React.FC<PostProps> = ({post}) =>
 				<title>{post.title} | STEM Guy</title>
 				<meta name='description' content={post.description} />
 				<meta name='thumbnail' content={post.image.url} />
+
+				<meta property="og:title" content={post.title} />
+				<meta property="og:description" content={post.description} />
+				<meta property="og:image" content={post.image.url} />
+				<meta property="og:url" content={`https://stemguy.club/${query.post}}`} />
+
+				<meta name="twitter:title" content={post.title} />
+				<meta name="twitter:description" content={post.description} />
+				<meta name="twitter:image" content={post.image.url} />
+				<meta name="twitter:card" content="summary" />
 			</Head>
 
 			<header>
