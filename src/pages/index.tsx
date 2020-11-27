@@ -65,16 +65,16 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 		<Container className='page'>
 			<Head>
 				<title>STEM Guy</title>
-				<meta name='thumbnail' content='/logo.svg' />
+				<meta name='thumbnail' content='/logo.png' />
 
 				<meta property="og:title" content='STEM Guy' />
 				<meta property="og:description" content='The STEM Guy blog is a place to read about science and technology.' />
-				<meta property="og:image" content='/logo.svg' />
+				<meta property="og:image" content='/logo.png' />
 				<meta property="og:url" content='https://stemguy.club' />
 
 				<meta name="twitter:title" content='STEM Guy' />
 				<meta name="twitter:description" content='The STEM Guy blog is a place to read about science and technology.' />
-				<meta name="twitter:image" content='/logo.svg' />
+				<meta name="twitter:image" content='/logo.png' />
 				<meta name="twitter:card" content="summary" />
 			</Head>
 

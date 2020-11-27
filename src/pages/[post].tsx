@@ -79,7 +79,7 @@ const Post: React.FC<PostProps> = ({post}) =>
 				<meta property="og:title" content={post.title} />
 				<meta property="og:description" content={post.description} />
 				<meta property="og:image" content={post.image.url} />
-				<meta property="og:url" content={`https://stemguy.club/${query.post}}`} />
+				<meta property="og:url" content={`https://stemguy.club/${query.post}`} />
 
 				<meta name="twitter:title" content={post.title} />
 				<meta name="twitter:description" content={post.description} />
