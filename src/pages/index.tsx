@@ -103,7 +103,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 			</header>
 
 			{
-				!data
+				!data && search !== ''
 				? <Loading style={{height: '70vh'}} />
 				: posts.length === 0
 					? (
