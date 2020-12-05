@@ -51,15 +51,16 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 			if (q)
 				setSearch(String(q))
 		}
-	}, [])
+	}, [Router])
 
 	useEffect(() =>
 	{
-		if (search === '') setPosts(staticPosts)
+		if (search === '' || error) setPosts(staticPosts)
 		else if (data) setPosts(data.posts)
-	}, [data, search])
+	}, [data, error, search])
 
-	if (error) return <h1>failed to load data</h1>
+	if (error)
+		console.log('[error while getting data]', error)
 
 	return (
 		<Container className='page'>
