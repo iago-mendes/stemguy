@@ -75,11 +75,12 @@ const Post: React.FC<PostProps> = ({post}) =>
 				<title>{post.title} | STEM Guy</title>
 				<meta name='description' content={post.description} />
 				<meta name='thumbnail' content={post.image.url} />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 				<meta property="og:title" content={post.title} />
 				<meta property="og:description" content={post.description} />
 				<meta property="og:image" content={post.image.url} />
-				<meta property="og:url" content={`https://stemguy.club/${query.post}`} />
+				<meta property="og:url" content={'https://stemguy.club'} />
 
 				<meta name="twitter:title" content={post.title} />
 				<meta name="twitter:description" content={post.description} />
