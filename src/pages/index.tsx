@@ -94,9 +94,13 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 
 			{
 				!data
-				? <Loading style={{height: '50%'}} />
+				? <Loading style={{height: '70vh'}} />
 				: posts.length === 0
-					? <h1>No results found!</h1>
+					? (
+						<div className="noResults">
+							<h1>No results found!</h1>
+						</div>
+					)
 					: (
 						<div className="scroll">
 							<main>

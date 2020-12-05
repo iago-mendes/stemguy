@@ -184,6 +184,24 @@ const Container = styled.div`
 		}
 	}
 
+	.noResults
+	{
+		width: 100%;
+		height: 70vh;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		h1
+		{
+			color: ${p => p.theme.colors.primary};
+			font-family: Ubuntu;
+			font-weight: 700;
+			font-size: 3rem;
+		}
+	}
+
 	@media(max-width: 1100px)
 	{
 		header
