@@ -62,6 +62,9 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	if (error)
 		console.log('[error while getting data]', error)
 
+	const title = 'STEM Guy | A blog about science and technology'
+	const description = 'The STEM Guy blog is a place to read about science and technology.'
+
 	function truncateText(text: string, length: number)
 	{
 		let truncated = text
@@ -75,20 +78,18 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	return (
 		<Container className='page'>
 			<Head>
-				{/* <title>STEM Guy | A blog about science and technology</title> */}
-				<title>Test: {staticPosts.length}</title>
-				<meta name='description' content={`Test: ${staticPosts.length}`} />
-				{/* <meta name='description' content='The STEM Guy blog is a place to read about science and technology.' /> */}
+				<title>{title}</title>
+				<meta name='description' content={description} />
 				<meta name='thumbnail' content='/logo.png' />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-				<meta property="og:title" content='STEM Guy | A blog about science and technology' />
-				<meta property="og:description" content='The STEM Guy blog is a place to read about science and technology.' />
+				<meta property="og:title" content={title} />
+				<meta property="og:description" content={description} />
 				<meta property="og:image" content='/logo.png' />
 				<meta property="og:url" content='https://stemguy.club' />
 
-				<meta name="twitter:title" content='STEM Guy | A blog about science and technology' />
-				<meta name="twitter:description" content='The STEM Guy blog is a place to read about science and technology.' />
+				<meta name="twitter:title" content={title} />
+				<meta name="twitter:description" content={description} />
 				<meta name="twitter:image" content='/logo.png' />
 				<meta name="twitter:card" content="summary" />
 			</Head>
