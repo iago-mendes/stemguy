@@ -4,12 +4,12 @@ import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 import Image from 'next/image'
 import {FaSearch} from 'react-icons/fa'
+import {useRouter} from 'next/router'
 
 import Loading from '../components/Loading'
 import api from '../services/api'
 import logo from '../assets/logoDarked.svg'
 import Container from '../styles/pages/index'
-import { useRouter } from 'next/router'
 
 interface Post
 {
@@ -62,6 +62,16 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	if (error)
 		console.log('[error while getting data]', error)
 
+	function truncateText(text: string, length: number)
+	{
+		let truncated = text
+
+		if (truncated.length > length)
+			truncated = truncated.substr(0, length) + '...';
+
+		return truncated;
+	}
+
 	return (
 		<Container className='page'>
 			<Head>
@@ -109,8 +119,8 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 										<div className="imgContainer">
 											<img src={post.image.url} alt={post.image.alt} />
 										</div>
-										<h1>{post.title}</h1>
-										<p>{post.description}</p>
+										<h1>{truncateText(post.title, 30)}</h1>
+										<p>{truncateText(post.description, 200)}</p>
 										<ul>
 											{post.flags.map(flag => (
 												<li key={flag.name} style={{backgroundColor: `#${flag.color}`}} >{flag.name}</li>

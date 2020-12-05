@@ -97,7 +97,7 @@ const Container = styled.div`
 
 			display: grid;
 			grid-auto-rows: 30rem;
-			grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
 			grid-gap: 2rem;
 			align-items: center;
 			justify-items: center;
@@ -107,7 +107,8 @@ const Container = styled.div`
 				z-index: 1;
 
 				background-color: #fff;
-				width: fit-content;
+				width: 100%;
+				max-width: 35rem;
 				height: 100%;
 
 				display: flex;
@@ -130,7 +131,7 @@ const Container = styled.div`
 				.imgContainer
 				{
 					width: 100%;
-					height: 50%;
+					height: 40%;
 
 					display: flex;
 					align-items: center;
@@ -138,13 +139,16 @@ const Container = styled.div`
 
 					img
 					{
-						height: 100%;
+						max-height: 100%;
+						max-width: 100%;
 					}
 				}
 
 				h1
 				{
-					max-height: 10%;
+					height: 20%;
+					width: 100%;
+					text-align: center;
 
 					font-family: Ubuntu;
 					font-size: 2rem;
@@ -152,7 +156,8 @@ const Container = styled.div`
 
 				p
 				{
-					max-height: 20%;
+					height: 20%;
+					width: 100%;
 
 					font-family: Roboto;
 					font-size: 1rem;
@@ -166,7 +171,8 @@ const Container = styled.div`
 
 					height: 20%;
 					width: 100%;
-					padding: 1rem;
+
+					overflow-x: auto;
 
 					li
 					{
