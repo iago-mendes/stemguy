@@ -43,7 +43,7 @@ interface PostProps
 
 const Post: React.FC<PostProps> = ({post}) =>
 {
-	const {isFallback, query} = useRouter()
+	const {isFallback} = useRouter()
 	const [inDesktop, setInDesktop] = useState(true)
 	const [gettingWidth, setGettingWidth] = useState(true)
 
@@ -55,8 +55,6 @@ const Post: React.FC<PostProps> = ({post}) =>
 		setInDesktop(window.innerWidth >= 1270)
 		setGettingWidth(false)
 	}, [])
-
-	if (gettingWidth) return <Loading />
 
 	function formatDate(hash: string)
 	{
@@ -72,72 +70,84 @@ const Post: React.FC<PostProps> = ({post}) =>
 	return (
 		<Container inDesktop={inDesktop} className="page">
 			<Head>
-				<title>{post.title} | STEM Guy</title>
-				<meta name='description' content={post.description} />
-				<meta name='thumbnail' content={post.image.url} />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				{/* Primary Meta Tags */}
+				<title>{post.title}</title>
+				<meta name="title" content={post.title} />
+				<meta name="description" content={post.description} />
 
+				{/* Open Graph / Facebook */}
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="https://stemguy.club" />
 				<meta property="og:title" content={post.title} />
 				<meta property="og:description" content={post.description} />
 				<meta property="og:image" content={post.image.url} />
-				<meta property="og:url" content={'https://stemguy.club'} />
 
-				<meta name="twitter:title" content={post.title} />
-				<meta name="twitter:description" content={post.description} />
-				<meta name="twitter:image" content={post.image.url} />
-				<meta name="twitter:card" content="summary" />
+				{/* Twitter */}
+				<meta property="twitter:card" content="summary_large_image" />
+				<meta property="twitter:url" content="https://stemguy.club" />
+				<meta property="twitter:title" content={post.title} />
+				<meta property="twitter:description" content={post.description} />
+				<meta property="twitter:image" content={post.image.url} />
 			</Head>
 
-			<header>
-				<h1>{post.title}</h1>
-				<div className="info">
-					<div className="calendarTime">
-						<span>
-							<FiCalendar size={25} />
-							<h3>{formatDate(post.date)}</h3>
-						</span>
-						<span>
-							<FiClock size={25} />
-							<h3>{post.time} minutes</h3>
-						</span>
-					</div>
-					<div className="author">
-						<h3>by</h3>
-						<span>
-							<h2>{post.author.name}</h2>
-							<Image src={post.author.image} alt={post.author.name} width={40} height={40} />
-						</span>
-					</div>
-				</div>
-			</header>
+			{
+				gettingWidth
+				? <Loading />
+				: (
+					<>
+						<header>
+							<h1>{post.title}</h1>
+							<div className="info">
+								<div className="calendarTime">
+									<span>
+										<FiCalendar size={25} />
+										<h3>{formatDate(post.date)}</h3>
+									</span>
+									<span>
+										<FiClock size={25} />
+										<h3>{post.time} minutes</h3>
+									</span>
+								</div>
+								<div className="author">
+									<h3>by</h3>
+									<span>
+										<h2>{post.author.name}</h2>
+										<Image src={post.author.image} alt={post.author.name} width={40} height={40} />
+									</span>
+								</div>
+							</div>
+						</header>
 
-			<div className="mainContainer">
-				<main>
-					<p className="description">{post.description}</p>
-					<Img
-						url={post.image.url}
-						alt={post.image.alt}
-						credit={post.image.credit}
-						creditLink={post.image.creditLink}
-						width={post.image.width}
-						height={post.image.height}
-					/>
-					<div className="markdown">
-						<Markdown
-							markdown={post.markdown}
-							options={{openLinksInNewWindow: true}}
-							components={{Img, HorizontalAd}}
-						/>
-					</div>
-				</main>
-				{inDesktop && (
-					<aside>
-						<Ad width={160} height={600} />
-						<Ad width={250} height={250} />
-						<Ad width={300} height={250} />
-					</aside>
-				)}
-			</div>
+						<div className="mainContainer">
+							<main>
+								<p className="description">{post.description}</p>
+								<Img
+									url={post.image.url}
+									alt={post.image.alt}
+									credit={post.image.credit}
+									creditLink={post.image.creditLink}
+									width={post.image.width}
+									height={post.image.height}
+								/>
+								<div className="markdown">
+									<Markdown
+										markdown={post.markdown}
+										options={{openLinksInNewWindow: true}}
+										components={{Img, HorizontalAd}}
+									/>
+								</div>
+							</main>
+							{inDesktop && (
+								<aside>
+									<Ad width={160} height={600} />
+									<Ad width={250} height={250} />
+									<Ad width={300} height={250} />
+								</aside>
+							)}
+						</div>
+					</>
+				)
+			}
 		</Container>
 	)
 }
