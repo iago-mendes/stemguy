@@ -1,3 +1,4 @@
+import React from 'react'
 import {CSSProperties} from 'styled-components'
 import Container from '../styles/components/Loading'
 

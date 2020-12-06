@@ -1,9 +1,5 @@
-const withImages = require('next-images')
-module.exports = withImages({
-	esModule: true,
+module.exports = {
 	images: {
-		domains: [process.env.API_HOSTNAME],
-		loader: 'imgix',
-		path: ''
-	}
-})
+		loader: 'imgix'
+  }
+}

@@ -1,6 +1,6 @@
+import React, {useEffect, useState} from 'react'
 import {GetStaticProps} from 'next'
-import Head from 'next/head'
-import {useEffect, useState} from 'react'
+
 import useSWR from 'swr'
 import Image from 'next/image'
 import {FaSearch} from 'react-icons/fa'
@@ -8,8 +8,8 @@ import {useRouter} from 'next/router'
 
 import Loading from '../components/Loading'
 import api from '../services/api'
-import logo from '../assets/logoDarked.svg'
 import Container from '../styles/pages/index'
+import { NextSeo } from 'next-seo'
 
 interface Post
 {
@@ -77,28 +77,22 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 
 	return (
 		<Container className='page'>
-			<Head>
-				<title>{title}</title>
-				<meta name='description' content={description} />
-				<meta name='thumbnail' content='/logo.png' />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-				<meta property="og:title" content={title} />
-				<meta property="og:description" content={description} />
-				<meta property="og:image" content='/logo.png' />
-				<meta property="og:url" content='https://stemguy.club' />
-
-				<meta name="twitter:title" content={title} />
-				<meta name="twitter:description" content={description} />
-				<meta name="twitter:image" content='/logo.png' />
-				<meta name="twitter:card" content="summary" />
-			</Head>
-
+			<NextSeo
+        title="STEM Guy | A blog about science and technology"
+        description="The STEM Guy blog is a place to read about science and technology."
+        canonical="https://iago-mendes-stemguy.vercel.app/"
+        openGraph={{
+          url: 'https://iago-mendes-stemguy.vercel.app/',
+          title: 'STEM Guy | A blog about science and technology',
+          description: 'The STEM Guy blog is a place to read about science and technology.',
+          images: [{ url: 'https://devspace.app/img/cover.png' }],
+        }}
+      />
 			<header>
 				<div className='nameLogo'>
 					<h1>STEM Guy</h1>
 					<div className="img">
-						<Image src={logo} alt='STEM Guy' width={300} height={300} layout='intrinsic' priority />
+						<Image src="/logoDarked.svg" alt='STEM Guy' width={300} height={300} layout='intrinsic' priority />
 					</div>
 				</div>
 				<div className='input'>
