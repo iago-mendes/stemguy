@@ -5,5 +5,9 @@ module.exports = withImages({
 		domains: [process.env.API_HOSTNAME],
 		loader: 'imgix',
 		path: ''
+	},
+	publicRuntimeConfig:
+	{
+		gaId: process.env.GA_TRACKING_ID
 	}
 })
