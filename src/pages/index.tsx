@@ -62,8 +62,13 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	if (error)
 		console.log('[error while getting data]', error)
 
-	const title = 'STEM Guy | A blog about science and technology'
-	const description = 'The STEM Guy blog is a place to read about science and technology.'
+	const meta =
+	{
+		title: 'STEM Guy | A blog about science and technology',
+		description: 'The STEM Guy blog is a place to read about science and technology.',
+		url: 'https://stemguy.club',
+		image: 'https://api.stemguy.club/public/logo.png'
+	}
 
 	function truncateText(text: string, length: number)
 	{
@@ -78,20 +83,24 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	return (
 		<Container className='page'>
 			<Head>
-				<title>{title}</title>
-				<meta name='description' content={description} />
-				<meta name='thumbnail' content='/logo.png' />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				{/* Primary Meta Tags */}
+				<title>{meta.title}</title>
+				<meta name="title" content={meta.title} />
+				<meta name="description" content={meta.description} />
 
-				<meta property="og:title" content={title} />
-				<meta property="og:description" content={description} />
-				<meta property="og:image" content='/logo.png' />
-				<meta property="og:url" content='https://stemguy.club' />
+				{/* Open Graph / Facebook */}
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content={meta.url} />
+				<meta property="og:title" content={meta.title} />
+				<meta property="og:description" content={meta.description} />
+				<meta property="og:image" content={meta.image} />
 
-				<meta name="twitter:title" content={title} />
-				<meta name="twitter:description" content={description} />
-				<meta name="twitter:image" content='/logo.png' />
-				<meta name="twitter:card" content="summary" />
+				{/* Twitter */}
+				<meta property="twitter:card" content="summary_large_image" />
+				<meta property="twitter:url" content={meta.url} />
+				<meta property="twitter:title" content={meta.title} />
+				<meta property="twitter:description" content={meta.description} />
+				<meta property="twitter:image" content={meta.image} />
 			</Head>
 
 			<header>
