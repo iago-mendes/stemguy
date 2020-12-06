@@ -1,10 +1,10 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import Head from "next/head"
+
 import Image from 'next/image'
 import {FiCalendar, FiClock} from 'react-icons/fi'
 import Markdown from 'react-showdown'
 import {useRouter} from 'next/router'
-import {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import api from '../services/api'
 import Container from '../styles/pages/[post]'
@@ -12,6 +12,8 @@ import Img from '../components/Img'
 import Loading from '../components/Loading'
 import NotFound from '../components/NotFound'
 import Ad, {HorizontalAd} from '../components/Ad'
+import { NextSeo } from 'next-seo'
+import Head from 'next/head'
 
 interface PostProps
 {
@@ -50,6 +52,12 @@ const Post: React.FC<PostProps> = ({post}) =>
 	if (isFallback) return <Loading />
 	else if(!post) return <NotFound />
 
+	function slugfy(title: string) {
+		const slug = title.replace(/ /g, '-').toLowerCase();
+
+		return slug
+	}
+
 	useEffect(() =>
 	{
 		setInDesktop(window.innerWidth >= 1270)
@@ -71,22 +79,24 @@ const Post: React.FC<PostProps> = ({post}) =>
 
 	return (
 		<Container inDesktop={inDesktop} className="page">
-			<Head>
-				<title>{post.title} | STEM Guy</title>
-				<meta name='description' content={post.description} />
-				<meta name='thumbnail' content={post.image.url} />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-				<meta property="og:title" content={post.title} />
-				<meta property="og:description" content={post.description} />
-				<meta property="og:image" content={post.image.url} />
-				<meta property="og:url" content={'https://stemguy.club'} />
-
-				<meta name="twitter:title" content={post.title} />
-				<meta name="twitter:description" content={post.description} />
-				<meta name="twitter:image" content={post.image.url} />
-				<meta name="twitter:card" content="summary" />
-			</Head>
+			<NextSeo
+        title={`${post.title} | STEM Guy`}
+        description={post.description}
+        canonical={`https://iago-mendes-stemguy.vercel.app/${slugfy(post.title)}`}
+        openGraph={{
+          url: `https://iago-mendes-stemguy.vercel.app/${slugfy(post.title)}`,
+          title: post.title,
+          description: post.description,
+          images: [
+						{ 
+							url: post.image.url,
+							alt: post.image.alt,
+							height: post.image.height,
+							width: post.image.width
+						}
+					],
+        }}
+      />
 
 			<header>
 				<h1>{post.title}</h1>
@@ -112,7 +122,7 @@ const Post: React.FC<PostProps> = ({post}) =>
 			</header>
 
 			<div className="mainContainer">
-				<main>
+				<section>
 					<p className="description">{post.description}</p>
 					<Img
 						url={post.image.url}
@@ -129,7 +139,7 @@ const Post: React.FC<PostProps> = ({post}) =>
 							components={{Img, HorizontalAd}}
 						/>
 					</div>
-				</main>
+				</section>
 				{inDesktop && (
 					<aside>
 						<Ad width={160} height={600} />

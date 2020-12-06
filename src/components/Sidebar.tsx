@@ -1,9 +1,9 @@
-import {FormEvent, useEffect, useState} from 'react'
+import React, {FormEvent, useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
 import Router from 'next/router'
 
 import Container from '../styles/components/Sidebar'
-import logo from '../assets/logo.svg'
+
 
 const Sidebar: React.FC = () =>
 {
@@ -57,7 +57,7 @@ const Sidebar: React.FC = () =>
 			scrollingDown={scrollingDown}
 			onClick={e => (String(e.target).includes('HTMLDivElement') && !inMobile) && setIsClicked(!isClicked)}
 		>
-			<img src={logo} alt="STEM Guy" title="Home" onClick={() => Router.push('/')}/>
+			<img src='/logo.svg' alt="STEM Guy" title="Home" onClick={() => Router.push('/')}/>
 
 			<form title='Search' onClick={handleSearchClick} onSubmit={handleSearchSubmit}>
 				<FaSearch size={25} className="searchIcon" />
