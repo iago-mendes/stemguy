@@ -6,46 +6,47 @@ export default createGlobalStyle`
 		font-size: 10px;
 	}
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
 
-  body
-  {
-    background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
-  }
+	body
+	{
+		background-color: ${props => props.theme.colors.background};
+		color: ${props => props.theme.colors.text};
+	}
 
-  #__next
-  {
-    display: flex;
-
-		width: 100vw;
+	#__next
+	{
+		width: 100%;
 		height: 100vh;
-  }
+	}
 
 	.page
 	{
-		height: 100vh;
-    width: 100%;
-    overflow-y: auto;
+		height: fit-content;
+		overflow-y: auto;
 		overflow-x: hidden;
+
+		margin-left: 5rem;
+		width: calc(100% - 5rem);
 	}
 
 	@media (max-width: 1100px)
 	{
 		#__next
 		{
-			flex-direction: column;
+			height: 100%;
 		}
 
 		.page
 		{
-			height: 100%;
-			width: 100vw;
+			height: fit-content;
+			width: 100%;
 
+			margin: 0;
 			margin-top: 5rem;
 		}
 	}

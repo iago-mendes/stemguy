@@ -27,6 +27,7 @@ const Sidebar: React.FC = () =>
 	function handleScroll()
 	{
 		scroll = window.pageYOffset
+		console.log('[scroll]', scroll)
 		const isScrollingDown = scroll - previousScroll > 0
 		setScrollingDown(isScrollingDown)
 		previousScroll = scroll

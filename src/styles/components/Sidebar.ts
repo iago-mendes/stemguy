@@ -19,6 +19,12 @@ const Container = styled.div<ContainerProps>`
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 
+	position: fixed;
+	z-index: 100;
+	left: 0;
+	top: 0;
+	bottom: 0;
+
 	cursor: pointer;
 	transition: 0.25s;
 
@@ -85,8 +91,10 @@ const Container = styled.div<ContainerProps>`
 		padding-left: 2rem;
 		padding-right: 2rem;
 
-		position: fixed;
-		z-index: 100;
+		top: 0;
+		bottom: unset;
+		left: 0;
+		right: 0;
 
 		top: ${p => p.scrollingDown ? '-5rem' : '0'};
 
