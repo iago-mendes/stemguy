@@ -60,8 +60,7 @@ const Container = styled.div`
 			padding-left: 1.5rem;
 			padding-right: 1.5rem;
 
-			/* position: absolute; */
-			bottom: -2.5rem;
+			margin-bottom: -2.5rem;
 
 			background-color: #fff;
 
@@ -190,6 +189,7 @@ const Container = styled.div`
 
 	.noResults
 	{
+		margin-top: 30vh;
 		width: 100%;
 		height: 70vh;
 
@@ -231,7 +231,23 @@ const Container = styled.div`
 			.input
 			{
 				width: 75%;
+
+				svg
+				{
+					width: 2.5rem;
+					height: 2.5rem;
+				}
+
+				input
+				{
+					width: 75%;
+				}
 			}
+		}
+
+		.noResults
+		{
+			margin-top: calc(20vh + 5rem)
 		}
 
 		main

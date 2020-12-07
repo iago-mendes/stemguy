@@ -118,7 +118,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 
 			{
 				!data && search !== ''
-				? <Loading style={{height: '70vh'}} />
+				? <Loading style={{height: '70vh', marginTop: '30vh'}} />
 				: posts.length === 0
 					? (
 						<div className="noResults">
