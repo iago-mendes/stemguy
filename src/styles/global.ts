@@ -36,18 +36,12 @@ export default createGlobalStyle`
 
 	@media (max-width: 1100px)
 	{
-		#__next
-		{
-			height: 100%;
-		}
-
 		.page
 		{
 			height: fit-content;
 			width: 100%;
 
 			margin: 0;
-			margin-top: 5rem;
 		}
 	}
 `

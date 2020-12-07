@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	overflow-y: hidden;
+	position: relative;
 
 	header
 	{
@@ -14,7 +14,11 @@ const Container = styled.div`
 
 		background-color: ${p => p.theme.colors.primary};
 
-		position: relative;
+		position: absolute;
+		z-index: 99;
+		left: 0;
+		top: 0;
+		right: 0;
 
 		.nameLogo
 		{
@@ -56,7 +60,7 @@ const Container = styled.div`
 			padding-left: 1.5rem;
 			padding-right: 1.5rem;
 
-			position: absolute;
+			/* position: absolute; */
 			bottom: -2.5rem;
 
 			background-color: #fff;
@@ -84,107 +88,101 @@ const Container = styled.div`
 		}
 	}
 
-	.scroll
+	main
 	{
-		width: 100%;
-		height: 70vh;
-		overflow-y: auto;
+		margin-top: 30vh;
+		padding: 5rem;
+		height: fit-content;
 
-		main
+		display: grid;
+		grid-auto-rows: 30rem;
+		grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+		grid-gap: 2rem;
+		align-items: center;
+		justify-items: center;
+
+		.post
 		{
-			padding: 5rem;
-			height: fit-content;
+			z-index: 1;
 
-			display: grid;
-			grid-auto-rows: 30rem;
-			grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-			grid-gap: 2rem;
+			background-color: #fff;
+			width: 100%;
+			max-width: 35rem;
+			height: 100%;
+
+			display: flex;
+			flex-direction: column;
 			align-items: center;
-			justify-items: center;
+			gap: 1rem;
 
-			.post
+			padding: 1rem;
+			border-radius: 2rem;
+
+			cursor: pointer;
+			transition: 0.25s;
+
+			:hover
 			{
-				z-index: 1;
+				transform: scale(1.01);
+				box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+			}
 
-				background-color: #fff;
+			.imgContainer
+			{
 				width: 100%;
-				max-width: 35rem;
-				height: 100%;
+				height: 40%;
 
 				display: flex;
-				flex-direction: column;
 				align-items: center;
-				gap: 1rem;
+				justify-content: center;
 
-				padding: 1rem;
-				border-radius: 2rem;
-
-				cursor: pointer;
-				transition: 0.25s;
-
-				:hover
+				img
 				{
-					transform: scale(1.01);
-					box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+					max-height: 100%;
+					max-width: 100%;
 				}
+			}
 
-				.imgContainer
+			h1
+			{
+				height: 20%;
+				width: 100%;
+				text-align: center;
+
+				font-family: Ubuntu;
+				font-size: 2rem;
+			}
+
+			p
+			{
+				height: 20%;
+				width: 100%;
+
+				font-family: Roboto;
+				font-size: 1rem;
+			}
+
+			ul
+			{
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+
+				height: 20%;
+				width: 100%;
+
+				overflow-x: auto;
+
+				li
 				{
-					width: 100%;
-					height: 40%;
-
-					display: flex;
-					align-items: center;
-					justify-content: center;
-
-					img
-					{
-						max-height: 100%;
-						max-width: 100%;
-					}
-				}
-
-				h1
-				{
-					height: 20%;
-					width: 100%;
-					text-align: center;
+					list-style: none;
 
 					font-family: Ubuntu;
-					font-size: 2rem;
-				}
+					color: #fff;
+					border-radius: 100rem;
 
-				p
-				{
-					height: 20%;
-					width: 100%;
-
-					font-family: Roboto;
+					padding: 0.5rem;
 					font-size: 1rem;
-				}
-
-				ul
-				{
-					display: flex;
-					align-items: center;
-					justify-content: space-around;
-
-					height: 20%;
-					width: 100%;
-
-					overflow-x: auto;
-
-					li
-					{
-						list-style: none;
-
-						font-family: Ubuntu;
-						color: #fff;
-						border-radius: 100rem;
-
-						padding: 0.5rem;
-						font-size: 1rem;
-					}
 				}
 			}
 		}
@@ -214,6 +212,9 @@ const Container = styled.div`
 		{
 			height: 20vh;
 
+			left: 0;
+			top: 5rem;
+
 			.nameLogo
 			{
 				h1
@@ -233,15 +234,12 @@ const Container = styled.div`
 			}
 		}
 
-		.scroll
+		main
 		{
-			height: calc(80vh - 5rem);
+			margin-top: calc(20vh + 5rem);
 
-			main
-			{
-				padding: 2rem;
-				padding-top: 4rem;
-			}
+			padding: 2rem;
+			padding-top: 4rem;
 		}
 	}
 `

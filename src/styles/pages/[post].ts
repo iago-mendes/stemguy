@@ -183,6 +183,8 @@ const Container = styled.div<ContainerProps>`
 
 	@media (max-width: 700px)
 	{
+		margin-top: 5rem !important;
+
 		header
 		{
 			padding: 1rem;

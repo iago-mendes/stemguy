@@ -126,24 +126,22 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 						</div>
 					)
 					: (
-						<div className="scroll">
-							<main>
-								{posts.map(post => (
-									<div className="post" key={post.id} onClick={() => Router.push(`/${post.url_id}`)}>
-										<div className="imgContainer">
-											<img src={post.image.url} alt={post.image.alt} />
-										</div>
-										<h1>{truncateText(post.title, 30)}</h1>
-										<p>{truncateText(post.description, 200)}</p>
-										<ul>
-											{post.flags.map(flag => (
-												<li key={flag.name} style={{backgroundColor: `#${flag.color}`}} >{flag.name}</li>
-											))}
-										</ul>
+						<main>
+							{posts.map(post => (
+								<div className="post" key={post.id} onClick={() => Router.push(`/${post.url_id}`)}>
+									<div className="imgContainer">
+										<img src={post.image.url} alt={post.image.alt} />
 									</div>
-								))}
-							</main>
-						</div>
+									<h1>{truncateText(post.title, 30)}</h1>
+									<p>{truncateText(post.description, 200)}</p>
+									<ul>
+										{post.flags.map(flag => (
+											<li key={flag.name} style={{backgroundColor: `#${flag.color}`}} >{flag.name}</li>
+										))}
+									</ul>
+								</div>
+							))}
+						</main>
 					)
 			}
 		</Container>
