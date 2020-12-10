@@ -119,7 +119,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 			{
 				!data && search !== ''
 				? <Loading style={{height: '70vh', marginTop: '30vh'}} />
-				: posts.length === 0
+				: posts.length === 0 && search !== ''
 					? (
 						<div className="noResults">
 							<h1>No results found!</h1>
@@ -136,7 +136,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 									<p>{truncateText(post.description, 200)}</p>
 									<ul>
 										{post.flags.map(flag => (
-											<li key={flag.name} style={{backgroundColor: `#${flag.color}`}} >{flag.name}</li>
+											<li key={flag.name} style={{backgroundColor: flag.color}} >{flag.name}</li>
 										))}
 									</ul>
 								</div>
