@@ -1,16 +1,18 @@
 import {FormEvent, useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
-import Router from 'next/router'
+import {useRouter} from 'next/router'
 
 import Container from '../styles/components/Sidebar'
 import logo from '../assets/logo.svg'
 
 const Sidebar: React.FC = () =>
 {
+	const Router = useRouter()
+	
 	const [search, setSearch] = useState('')
-
 	const [isClicked, setIsClicked] = useState(false)
 	const [inMobile, setInMobile] = useState(false)
+	const [page, setPage] = useState('')
 
 	const [scrollingDown, setScrollingDown] = useState(false)
 	let previousScroll = 0
@@ -23,6 +25,12 @@ const Sidebar: React.FC = () =>
 		previousScroll = window.pageYOffset
 		window.onscroll = handleScroll
 	}, [])
+
+	useEffect(() =>
+	{
+		const tmp = Router.pathname.split('/')[1]
+		setPage(tmp)
+	}, [Router])
 
 	function handleScroll()
 	{
@@ -51,11 +59,15 @@ const Sidebar: React.FC = () =>
 		setIsClicked(!isClicked)
 	}
 
+	if (page === '')
+		return null
+
   return (
 		<Container
 			isClicked={isClicked}
 			scrollingDown={scrollingDown}
-			onClick={e => (String(e.target).includes('HTMLDivElement') && !inMobile) && setIsClicked(!isClicked)}
+			onMouseEnter={() => setIsClicked(true)}
+			onMouseLeave={() => setIsClicked(false)}
 		>
 			<img src={logo} alt="STEM Guy" title="Home" onClick={() => Router.push('/')}/>
 

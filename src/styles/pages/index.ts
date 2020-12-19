@@ -3,6 +3,11 @@ import styled from 'styled-components'
 const Container = styled.div`
 	position: relative;
 
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	width: 100%;
+
 	header
 	{
 		display: flex;
@@ -211,9 +216,6 @@ const Container = styled.div`
 		header
 		{
 			height: 20vh;
-
-			left: 0;
-			top: 5rem;
 
 			.nameLogo
 			{

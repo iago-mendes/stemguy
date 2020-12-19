@@ -81,7 +81,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	}
 
 	return (
-		<Container className='page'>
+		<Container>
 			<Head>
 				{/* Primary Meta Tags */}
 				<title>{meta.title}</title>
