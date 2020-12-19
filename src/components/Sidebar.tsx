@@ -10,7 +10,7 @@ const Sidebar: React.FC = () =>
 	const Router = useRouter()
 	
 	const [search, setSearch] = useState('')
-	const [isClicked, setIsClicked] = useState(false)
+	const [isExpanded, setIsExpanded] = useState(false)
 	const [inMobile, setInMobile] = useState(false)
 	const [page, setPage] = useState('')
 
@@ -40,23 +40,32 @@ const Sidebar: React.FC = () =>
 		previousScroll = scroll
 	}
 
+	function handleLogoClick()
+	{
+		setIsExpanded(false)
+		Router.push('/')
+	}
+
 	function handleSearchClick()
 	{
-		if (!inMobile && !isClicked) setIsClicked(!isClicked)
+		if (!inMobile && !isExpanded) setIsExpanded(!isExpanded)
 		else
 		{
+			setIsExpanded(false)
 			Router.push(`/?search=${search}`)
 			setSearch('')
-			setIsClicked(!isClicked)
+			setIsExpanded(!isExpanded)
 		}
 	}
 
 	function handleSearchSubmit(e: FormEvent)
 	{
 		e.preventDefault()
+
+		setIsExpanded(false)
 		Router.push(`/?search=${search}`)
 		setSearch('')
-		setIsClicked(!isClicked)
+		setIsExpanded(!isExpanded)
 	}
 
 	if (page === '')
@@ -64,16 +73,16 @@ const Sidebar: React.FC = () =>
 
   return (
 		<Container
-			isClicked={isClicked}
+			isExpanded={isExpanded}
 			scrollingDown={scrollingDown}
-			onMouseEnter={() => setIsClicked(true)}
-			onMouseLeave={() => setIsClicked(false)}
+			onMouseEnter={() => setIsExpanded(true)}
+			onMouseLeave={() => setIsExpanded(false)}
 		>
-			<img src={logo} alt="STEM Guy" title="Home" onClick={() => Router.push('/')}/>
+			<img src={logo} alt="STEM Guy" title="Home" onClick={handleLogoClick}/>
 
 			<form title='Search' onClick={handleSearchClick} onSubmit={handleSearchSubmit}>
 				<FaSearch size={25} className="searchIcon" />
-				{(isClicked && !inMobile) && (
+				{(isExpanded && !inMobile) && (
 					<input autoFocus value={search} onChange={e => setSearch(e.target.value)} />
 				)}
 			</form>

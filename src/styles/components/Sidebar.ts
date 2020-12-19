@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 interface ContainerProps
 {
-	isClicked: boolean
+	isExpanded: boolean
 	scrollingDown: boolean
 }
 
 const Container = styled.div<ContainerProps>`
   background-color: ${props => props.theme.colors.primary};
   height: 100vh;
-  width: ${props => props.isClicked ? '20rem' : '5rem'};
+  width: ${props => props.isExpanded ? '20rem' : '5rem'};
 
 	display: flex;
 	flex-direction: column;
@@ -34,14 +34,14 @@ const Container = styled.div<ContainerProps>`
 		border-radius: 100%;
 		padding: 5px;
 
-		width: ${props => props.isClicked ? '15rem' : '4rem'};
-		height: ${props => props.isClicked ? '15rem' : '4rem'};
+		width: ${props => props.isExpanded ? '15rem' : '4rem'};
+		height: ${props => props.isExpanded ? '15rem' : '4rem'};
 
 		transition: 0.25s;
 
 		:hover
 		{
-			transform: ${props => props.isClicked ? 'scale(1.05)' : 'scale(1.1)'};
+			transform: ${props => props.isExpanded ? 'scale(1.05)' : 'scale(1.1)'};
 		}
 	}
 
@@ -60,13 +60,13 @@ const Container = styled.div<ContainerProps>`
 		gap: 0.5rem;
 
 		height: 4rem;
-		width: ${p => p.isClicked ? '90%' : '4rem'};
+		width: ${p => p.isExpanded ? '90%' : '4rem'};
 
 		transition: 0.25s;
 
 		:hover
 		{
-			transform: ${props => props.isClicked ? 'scale(1.05)' : 'scale(1.1)'};
+			transform: ${props => props.isExpanded ? 'scale(1.05)' : 'scale(1.1)'};
 		}
 
 		input
