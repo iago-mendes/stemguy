@@ -10,7 +10,7 @@ import api from '../services/api'
 import Container from '../styles/pages/[post]'
 import Img from '../components/Img'
 import Loading from '../components/Loading'
-import NotFound from '../components/NotFound'
+import NotFound from './404'
 import Ad, {HorizontalAd} from '../components/Ad'
 
 interface Post
