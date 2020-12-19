@@ -13,47 +13,49 @@ import Loading from '../components/Loading'
 import NotFound from '../components/NotFound'
 import Ad, {HorizontalAd} from '../components/Ad'
 
+interface Post
+{
+	title: string
+	date: string
+	time: number
+	author:
+	{
+		name: string
+		role: string
+		image: string
+	}
+	description: string
+	image:
+	{
+		url: string
+		alt: string
+		credit?: string
+		creditLink?: string
+		width: number
+		height: number
+	}
+	markdown: string
+	flags: Array<{name: string, color: string}>
+}
+
 interface PostProps
 {
-	post:
-	{
-		title: string
-  	date: string
-  	time: number
-		author:
-		{
-			name: string
-			role: string
-			image: string
-		}
-		description: string
-		image:
-		{
-			url: string
-			alt: string
-			credit?: string
-			creditLink?: string
-			width: number
-			height: number
-		}
-		markdown: string
-		flags: Array<{name: string, color: string}>
-	}
+	post: Post
 }
 
 const Post: React.FC<PostProps> = ({post}) =>
 {
-	const {isFallback} = useRouter()
-	const [inDesktop, setInDesktop] = useState(true)
-	const [gettingWidth, setGettingWidth] = useState(true)
+	const {isFallback, } = useRouter()
+	const [inDesktop, setInDesktop] = useState(false)
 
-	if (isFallback) return <Loading />
-	else if(!post) return <NotFound />
+	if (isFallback)
+		return <Loading />
+	else if(!post)
+		return <NotFound />
 
 	useEffect(() =>
 	{
 		setInDesktop(window.innerWidth >= 1270)
-		setGettingWidth(false)
 	}, [])
 
 	function formatDate(hash: string)
@@ -90,64 +92,56 @@ const Post: React.FC<PostProps> = ({post}) =>
 				<meta property="twitter:image" content={post.image.url} />
 			</Head>
 
-			{
-				gettingWidth
-				? <Loading />
-				: (
-					<>
-						<header>
-							<h1>{post.title}</h1>
-							<div className="info">
-								<div className="calendarTime">
-									<span>
-										<FiCalendar size={25} />
-										<h3>{formatDate(post.date)}</h3>
-									</span>
-									<span>
-										<FiClock size={25} />
-										<h3>{post.time} minutes</h3>
-									</span>
-								</div>
-								<div className="author">
-									<h3>by</h3>
-									<span>
-										<h2>{post.author.name}</h2>
-										<Image src={post.author.image} alt={post.author.name} width={40} height={40} />
-									</span>
-								</div>
-							</div>
-						</header>
+			<header>
+				<h1>{post.title}</h1>
+				<div className="info">
+					<div className="calendarTime">
+						<span>
+							<FiCalendar size={25} />
+							<h3>{formatDate(post.date)}</h3>
+						</span>
+						<span>
+							<FiClock size={25} />
+							<h3>{post.time} minutes</h3>
+						</span>
+					</div>
+					<div className="author">
+						<h3>by</h3>
+						<span>
+							<h2>{post.author.name}</h2>
+							<Image src={post.author.image} alt={post.author.name} width={40} height={40} />
+						</span>
+					</div>
+				</div>
+			</header>
 
-						<div className="mainContainer">
-							<main>
-								<p className="description">{post.description}</p>
-								<Img
-									url={post.image.url}
-									alt={post.image.alt}
-									credit={post.image.credit}
-									creditLink={post.image.creditLink}
-									width={post.image.width}
-									height={post.image.height}
-								/>
-								<div className="markdown">
-									<Markdown
-										markdown={post.markdown}
-										options={{openLinksInNewWindow: true}}
-										components={{Img, HorizontalAd}}
-									/>
-								</div>
-							</main>
-							{inDesktop && (
-								<aside>
-									<Ad width={160} height={600} />
-									<Ad width={250} height={250} />
-									<Ad width={300} height={250} />
-								</aside>
-							)}
-						</div>
-					</>
-				)
-			}
+			<div className="mainContainer">
+				<main>
+					<p className="description">{post.description}</p>
+					<Img
+						url={post.image.url}
+						alt={post.image.alt}
+						credit={post.image.credit}
+						creditLink={post.image.creditLink}
+						width={post.image.width}
+						height={post.image.height}
+					/>
+					<div className="markdown">
+						<Markdown
+							markdown={post.markdown}
+							options={{openLinksInNewWindow: true}}
+							components={{Img, HorizontalAd}}
+						/>
+					</div>
+				</main>
+				{inDesktop && (
+					<aside>
+						<Ad width={160} height={600} />
+						<Ad width={250} height={250} />
+						<Ad width={300} height={250} />
+					</aside>
+				)}
+			</div>
 		</Container>
 	)
 }
@@ -170,11 +164,15 @@ export const getStaticPaths: GetStaticPaths = async () =>
 
 export const getStaticProps: GetStaticProps = async ctx =>
 {
-	const {post} = ctx.params
-	const {data} = await api.get(`posts/${post}`)
+	const {post: urlId} = ctx.params
+	let post: Post = null
+
+	await api.get(`posts/${urlId}`)
+	.then(({data}) => post = data)
+	.catch(({response: res}) => console.log('[error]', res.data))
 	
 	return {
-		props: {post: data},
+		props: {post},
 		revalidate: 5
 	}
 }
