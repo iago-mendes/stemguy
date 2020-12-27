@@ -17,6 +17,7 @@ interface Post
 	url_id: string
 	title: string
 	description: string
+	date: Date
 	image:
 	{
 		url: string
@@ -55,9 +56,14 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 
 	useEffect(() =>
 	{
-		if (search === '' || error) setPosts(staticPosts)
+		if (search === '' || error)
+		{
+			let tmp = staticPosts
+			tmp.sort((a,b) => a.date < b.date ? 1 : -1)
+			setPosts(tmp)
+		}
 		else if (data) setPosts(data.posts)
-	}, [data, error, search])
+	}, [data, error, search, staticPosts])
 
 	if (error)
 		console.log('[error while getting data]', error)
