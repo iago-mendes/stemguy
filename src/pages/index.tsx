@@ -135,8 +135,14 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 						<main>
 							{posts.map(post => (
 								<div className="post" key={post.id} onClick={() => Router.push(`/${post.url_id}`)}>
-									<div className="imgContainer">
-										<img src={post.image.url} alt={post.image.alt} />
+									<div className="img">
+										<Image
+											src={post.image.url}
+											alt={post.image.alt}
+											width={post.image.width}
+											height={post.image.height}
+											layout='responsive'
+										/>
 									</div>
 									<h1>{truncateText(post.title, 30)}</h1>
 									<p>{truncateText(post.description, 200)}</p>

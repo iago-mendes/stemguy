@@ -131,19 +131,15 @@ const Container = styled.div`
 				box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 			}
 
-			.imgContainer
+			.img
 			{
 				width: 100%;
 				height: 40%;
-
-				display: flex;
-				align-items: center;
-				justify-content: center;
+				overflow: hidden;
 
 				img
 				{
-					max-height: 100%;
-					max-width: 100%;
+					border-radius: 1rem;
 				}
 			}
 
