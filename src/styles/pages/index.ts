@@ -162,27 +162,55 @@ const Container = styled.div`
 				font-size: 1rem;
 			}
 
-			ul
+			.scroll
 			{
-				display: flex;
-				align-items: center;
-				justify-content: space-around;
-
-				height: 20%;
 				width: 100%;
-
+				height: 20%;
 				overflow-x: auto;
 
-				li
+				::-webkit-scrollbar
 				{
-					list-style: none;
+					width: 1rem;
+				}
 
-					font-family: Ubuntu;
-					color: #fff;
-					border-radius: 100rem;
+				::-webkit-scrollbar-track
+				{
+					box-shadow: inset 0 0 0.5rem rgba(0,0,0,0.25);
+					border-radius: 1rem;
+				}
 
-					padding: 0.5rem;
-					font-size: 1rem;
+				::-webkit-scrollbar-thumb
+				{
+					background: ${p => p.theme.colors.textLight};
+					border-radius: 1rem;
+				}
+
+				ul
+				{
+					height: 100%;
+					min-width: 100%;
+
+					padding-left: 2rem;
+					padding-right: 2rem;
+
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					gap: 2rem;
+
+					li
+					{
+						list-style: none;
+
+						font-family: Ubuntu;
+						font-weight: 700;
+						color: #fff;
+						border-radius: 0.75rem;
+
+						padding: 0.5rem;
+						font-size: 1rem;
+						white-space: nowrap;
+					}
 				}
 			}
 		}

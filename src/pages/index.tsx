@@ -146,11 +146,13 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 									</div>
 									<h1>{truncateText(post.title, 30)}</h1>
 									<p>{truncateText(post.description, 200)}</p>
-									<ul>
-										{post.flags.map(flag => (
-											<li key={flag.name} style={{backgroundColor: flag.color}} >{flag.name}</li>
-										))}
-									</ul>
+									<div className="scroll">
+										<ul>
+											{post.flags.map(flag => (
+												<li key={flag.name} style={{backgroundColor: flag.color}} >{flag.name}</li>
+											))}
+										</ul>
+									</div>
 								</div>
 							))}
 						</main>
