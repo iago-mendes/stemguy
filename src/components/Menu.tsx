@@ -2,10 +2,10 @@ import {FormEvent, useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 
-import Container from '../styles/components/Sidebar'
+import Container from '../styles/components/Menu'
 import logo from '../assets/logo.svg'
 
-const Sidebar: React.FC = () =>
+const Menu: React.FC = () =>
 {
 	const Router = useRouter()
 	
@@ -90,4 +90,4 @@ const Sidebar: React.FC = () =>
   )
 }
 
-export default Sidebar
+export default Menu

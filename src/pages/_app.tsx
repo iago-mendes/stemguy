@@ -3,7 +3,7 @@ import {useRouter} from 'next/router'
 import {useEffect} from 'react'
 import {ThemeProvider} from 'styled-components'
 
-import Sidebar from '../components/Sidebar'
+import Menu from '../components/Menu'
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
 import * as gtag from '../utils/gtag'
@@ -24,7 +24,7 @@ const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 
   return (
     <ThemeProvider theme={theme}>
-      <Sidebar />
+      <Menu />
       <Component {...pageProps} />
       <GlobalStyle />
     </ThemeProvider>

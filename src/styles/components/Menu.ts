@@ -6,27 +6,17 @@ interface ContainerProps
 	scrollingDown: boolean
 }
 
-const Container = styled.div<ContainerProps>`
+const Container = styled.nav<ContainerProps>`
   background-color: ${props => props.theme.colors.primary};
-  height: 100vh;
-  width: ${props => props.isExpanded ? '20rem' : '5rem'};
+  height: 5rem;
+	width: 100%;
 
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-
-	position: fixed;
-	z-index: 100;
-	left: 0;
-	top: 0;
-	bottom: 0;
-
-	cursor: pointer;
-	transition: 0.25s;
+	padding-left: 2rem;
+	padding-right: 2rem;
 
 	img
 	{
@@ -34,14 +24,14 @@ const Container = styled.div<ContainerProps>`
 		border-radius: 100%;
 		padding: 5px;
 
-		width: ${props => props.isExpanded ? '15rem' : '4rem'};
-		height: ${props => props.isExpanded ? '15rem' : '4rem'};
+		width: 3.5rem;
+		height: 3.5rem;
 
 		transition: 0.25s;
 
 		:hover
 		{
-			transform: ${props => props.isExpanded ? 'scale(1.05)' : 'scale(1.1)'};
+			transform: scale(1.1);
 		}
 	}
 
@@ -59,15 +49,10 @@ const Container = styled.div<ContainerProps>`
 		padding-left: 1rem;
 		gap: 0.5rem;
 
-		height: 4rem;
-		width: ${p => p.isExpanded ? '90%' : '4rem'};
+		height: 3.5rem;
+		width: ${p => p.isExpanded ? '50rem' : '3.5rem'};
 
 		transition: 0.25s;
-
-		:hover
-		{
-			transform: ${props => props.isExpanded ? 'scale(1.05)' : 'scale(1.1)'};
-		}
 
 		input
 		{
