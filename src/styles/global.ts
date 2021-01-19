@@ -16,6 +16,24 @@ export default createGlobalStyle`
 	{
 		background-color: ${props => props.theme.colors.background};
 		color: ${props => props.theme.colors.text};
+
+		::-webkit-scrollbar
+		{
+			width: 1rem;
+		}
+		::-webkit-scrollbar-track
+		{
+			background-color: ${p => p.theme.colors.primary}40;
+		}
+		
+		::-webkit-scrollbar-thumb
+		{
+			background-color: ${p => p.theme.colors.primary};
+			:hover
+			{
+				background-color: ${p => p.theme.colors.primary}bf;
+			}
+		}
 	}
 
 	#__next
