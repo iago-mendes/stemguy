@@ -124,11 +124,18 @@ const Container = styled.div`
 
 			cursor: pointer;
 			transition: 0.25s;
+			box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 
 			:hover
 			{
-				transform: scale(1.01);
-				box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+				background-color: ${p => p.theme.colors.primary};
+				color: #fff;
+				border-radius: 0;
+
+				.img img
+				{
+					border-radius: 0;
+				}
 			}
 
 			.img
@@ -140,6 +147,7 @@ const Container = styled.div`
 				img
 				{
 					border-radius: 1rem;
+					transition: 0.25s;
 				}
 			}
 
@@ -170,7 +178,7 @@ const Container = styled.div`
 
 				::-webkit-scrollbar
 				{
-					width: 1rem;
+					height: 0.75rem;
 				}
 
 				::-webkit-scrollbar-track
@@ -181,7 +189,7 @@ const Container = styled.div`
 
 				::-webkit-scrollbar-thumb
 				{
-					background: ${p => p.theme.colors.textLight};
+					background: ${p => p.theme.colors.textLight}80;
 					border-radius: 1rem;
 				}
 
