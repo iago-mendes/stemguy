@@ -11,17 +11,22 @@ import * as gtag from '../utils/gtag'
 
 const MyApp: React.FC<AppProps> = ({Component, pageProps}) =>
 {
-	const router = useRouter();
+	const Router = useRouter()
 
   useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
+		const handleRouteChange = (url: URL) =>
+		{
+      gtag.pageview(url)
+		}
+		
+    Router.events.on('routeChangeComplete', handleRouteChange)
+    return () => Router.events.off('routeChangeComplete', handleRouteChange)
+	}, [Router.events])
+	
+	useEffect(() =>
+	{
+		window.scrollTo(0,0)
+	}, [Router.pathname])
 
   return (
     <ThemeProvider theme={theme}>
