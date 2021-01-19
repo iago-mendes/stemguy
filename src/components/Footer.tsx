@@ -7,23 +7,28 @@ const Footer: React.FC = () =>
 {
 	return (
 		<Container>
-			<div className='links'>
+			<div className='group'>
+				<h1>Site links</h1>
+				<Link href='/' >
+					<a className='link' >Home</a>
+				</Link>
 				<Link href='/about' >
-					About us
+					<a className='link' >About us</a>
 				</Link>
 				<Link href='/policies/privacy' >
-					Privacy policy
+					<a className='link' >Privacy policy</a>
 				</Link>
 				<Link href='/policies/terms-of-use' >
-					Terms of use
+					<a className='link' >Terms of use</a>
 				</Link>
 			</div>
-			<div className='socialMedias'>
-				<a target='_blank'href='https://www.instagram.com/stemguy.club/'>
+			<div className='group'>
+				<h1>Social medias</h1>
+				<a target='_blank' href='https://www.instagram.com/stemguy.club/' className='social' >
 					<FiInstagram size={25} />
 					<span>@stemguy.club</span>
 				</a>
-				<a target='_blank' href='https://twitter.com/stemguyclub' >
+				<a target='_blank' href='https://twitter.com/stemguyclub' className='social' >
 					<FiTwitter size={25} />
 					<span>@stemguyclub</span>
 				</a>
