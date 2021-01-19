@@ -144,8 +144,8 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 											layout='responsive'
 										/>
 									</div>
-									<h1>{truncateText(post.title, 30)}</h1>
-									<p>{truncateText(post.description, 200)}</p>
+									<h1>{truncateText(post.title, 45)}</h1>
+									<p>{truncateText(post.description, 225)}</p>
 									<div className="scroll">
 										<ul>
 											{post.flags.map(flag => (
