@@ -1,6 +1,7 @@
 import {FormEvent, useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
 import {useRouter} from 'next/router'
+import Image from 'next/image'
 
 import Container from '../styles/components/Menu'
 import logo from '../assets/logo.svg'
@@ -10,20 +11,13 @@ const Menu: React.FC = () =>
 	const Router = useRouter()
 	
 	const [search, setSearch] = useState('')
-	const [isExpanded, setIsExpanded] = useState(false)
+	const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 	const [inMobile, setInMobile] = useState(false)
 	const [page, setPage] = useState('')
-
-	const [scrollingDown, setScrollingDown] = useState(false)
-	let previousScroll = 0
-	let scroll = 0
 
 	useEffect(() =>
 	{
 		setInMobile(window.innerWidth <= 1100)
-
-		previousScroll = window.pageYOffset
-		window.onscroll = handleScroll
 	}, [])
 
 	useEffect(() =>
@@ -32,40 +26,24 @@ const Menu: React.FC = () =>
 		setPage(tmp)
 	}, [Router])
 
-	function handleScroll()
+	function handleExpandSearch(hasEntered: boolean)
 	{
-		scroll = window.pageYOffset
-		const isScrollingDown = scroll - previousScroll > 0
-		setScrollingDown(isScrollingDown)
-		previousScroll = scroll
-	}
+		if (inMobile)
+			return setIsSearchExpanded(false)
 
-	function handleLogoClick()
-	{
-		setIsExpanded(false)
-		Router.push('/')
-	}
-
-	function handleSearchClick()
-	{
-		if (!inMobile && !isExpanded) setIsExpanded(!isExpanded)
+		if (hasEntered)
+			setIsSearchExpanded(true)
 		else
-		{
-			setIsExpanded(false)
-			Router.push(`/?search=${search}`)
-			setSearch('')
-			setIsExpanded(!isExpanded)
-		}
+			setIsSearchExpanded(false)
 	}
 
 	function handleSearchSubmit(e: FormEvent)
 	{
 		e.preventDefault()
 
-		setIsExpanded(false)
+		setIsSearchExpanded(false)
 		Router.push(`/?search=${search}`)
 		setSearch('')
-		setIsExpanded(!isExpanded)
 	}
 
 	if (page === '')
@@ -73,17 +51,30 @@ const Menu: React.FC = () =>
 
   return (
 		<Container
-			isExpanded={isExpanded}
-			scrollingDown={scrollingDown}
-			onMouseEnter={() => setIsExpanded(true)}
-			onMouseLeave={() => setIsExpanded(false)}
+			isSearchExpanded={isSearchExpanded}
+			title='Home'
 		>
-			<img src={logo} alt="STEM Guy" title="Home" onClick={handleLogoClick}/>
+			<div className='logo' onClick={() => Router.push('/')} >
+				<div className='img'>
+					<Image src={logo} alt='STEM Guy' width={100} height={100} layout='responsive' />
+				</div>
+				<span>STEM Guy</span>
+			</div>
 
-			<form title='Search' onClick={handleSearchClick} onSubmit={handleSearchSubmit}>
-				<FaSearch size={25} className="searchIcon" />
-				{(isExpanded && !inMobile) && (
-					<input autoFocus value={search} onChange={e => setSearch(e.target.value)} />
+			<form
+				title='Search'
+				onSubmit={handleSearchSubmit}
+				onMouseEnter={() => handleExpandSearch(true)}
+				onMouseLeave={() => handleExpandSearch(false)}
+			>
+				<FaSearch size={25} className='searchIcon' />
+				{(isSearchExpanded && !inMobile) && (
+					<input
+						autoFocus
+						value={search}
+						onChange={e => setSearch(e.target.value)}
+						placeholder='Search for a topic'
+					/>
 				)}
 			</form>
     </Container>

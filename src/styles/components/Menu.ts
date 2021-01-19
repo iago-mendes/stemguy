@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 interface ContainerProps
 {
-	isExpanded: boolean
-	scrollingDown: boolean
+	isSearchExpanded: boolean
 }
 
 const Container = styled.nav<ContainerProps>`
@@ -18,20 +17,36 @@ const Container = styled.nav<ContainerProps>`
 	padding-left: 2rem;
 	padding-right: 2rem;
 
-	img
+	.logo
 	{
-		background-color: #fff;
-		border-radius: 100%;
-		padding: 5px;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
 
-		width: 3.5rem;
-		height: 3.5rem;
-
+		cursor: pointer;
 		transition: 0.25s;
 
+		.img
+		{
+			height: 4rem;
+			width: 4rem;
+			padding: 2px;
+
+			background-color: #fff;
+			border-radius: 100rem;
+		}
+
+		span
+		{
+			font-size: 3rem;
+			font-family: Aladin;
+
+			color: ${p => p.theme.colors.background};
+		}
+		
 		:hover
 		{
-			transform: scale(1.1);
+			transform: scale(1.07);
 		}
 	}
 
@@ -50,48 +65,22 @@ const Container = styled.nav<ContainerProps>`
 		gap: 0.5rem;
 
 		height: 3.5rem;
-		width: ${p => p.isExpanded ? '50rem' : '3.5rem'};
+		width: ${p => p.isSearchExpanded ? '50rem' : '3.5rem'};
 
 		transition: 0.25s;
 
 		input
 		{
 			width: 100%;
-			height: 75%;
+			height: 100%;
 
 			outline: none;
 			border: none;
+			background: none;
 
 			font-family: Ubuntu;
-		}
-	}
-
-	@media (max-width: 1100px)
-	{
-		height: 5rem;
-		width: 100vw;
-
-		flex-direction: row;
-		padding: 0;
-		padding-left: 2rem;
-		padding-right: 2rem;
-
-		top: 0;
-		bottom: unset;
-		left: 0;
-		right: 0;
-
-		top: ${p => p.scrollingDown ? '-5rem' : '0'};
-
-		img
-		{
-			width: 4rem;
-			height: 4rem;
-		}
-
-		form
-		{
-			width: 4rem;
+			font-weight: 700;
+			font-size: 1.75rem;
 		}
 	}
 `

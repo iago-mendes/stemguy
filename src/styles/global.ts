@@ -29,19 +29,5 @@ export default createGlobalStyle`
 		height: fit-content;
 		overflow-y: auto;
 		overflow-x: hidden;
-
-		margin-left: 5rem;
-		width: calc(100% - 5rem);
-	}
-
-	@media (max-width: 1100px)
-	{
-		.page
-		{
-			height: fit-content;
-			width: 100%;
-
-			margin: 0;
-		}
 	}
 `
