@@ -132,8 +132,7 @@ const TermsOfUse: React.FC = () =>
 
 				<h2>Contact Information</h2>
 
-				<p>Address: Rua Antônio Cardoso da Mata, 229a, Alcides Rabelo, Montes Claros, MG, Brazil</p>
-				<p>Email: contact@stemguy.club</p>
+				<p>Email: <a target='_blank' href='mailto:contact@stemguy.club'>contact@stemguy.club</a></p>
 			</main>
 		</Container>
 	)
