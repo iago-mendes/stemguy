@@ -6,7 +6,6 @@ import Container from '../../styles/pages/about/index'
 import logo from '../../assets/logo.svg'
 import { MemberListed } from '../../models/member'
 import api from '../../services/api'
-import Loading from '../../components/Loading'
 
 interface AboutProps
 {
