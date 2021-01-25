@@ -28,7 +28,7 @@ const About: React.FC<AboutProps> = ({members}) =>
 				<div className='questionsAnswers'>
 					<div className='group'>
 						<label>What is the STEM Guy?</label>
-						<p>The STEM Guy blog is a place where you can read articles about science and technology. Those posts are made by people passionate about these topics, which ensure the quality of our content.</p>
+						<p>The STEM Guy blog is a place where you can read articles about science and technology. The posts are made by people passionate about these topics, which ensure the quality of our content.</p>
 					</div>
 				</div>
 			</main>
