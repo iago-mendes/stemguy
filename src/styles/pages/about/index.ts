@@ -164,6 +164,68 @@ const Container = styled.div`
 			}
 		}
 	}
+
+	@media(max-width: 1100px)
+	{
+		main
+		{
+			flex-direction: column;
+			gap: 1rem;
+
+			.logo
+			{
+				width: 75%;
+			}
+
+			.questionsAnswers
+			{
+				width: 100%;
+				padding: 1rem;
+			}
+		}
+
+		.team
+		{
+			ul .member
+			{
+				flex-direction: column;
+				margin: 0;
+
+				:nth-child(odd), :nth-child(even)
+				{
+					flex-direction: column;
+					margin: 0;
+
+					border-radius: 0;
+					background-image: none;
+				}
+
+				.img
+				{
+					width: 75%;
+				}
+
+				.info
+				{
+					width: 100%;
+
+					gap: 1rem;
+					
+					.topics
+					{
+						width: 100%;
+
+						display: grid;
+						grid-auto-rows: 3.5rem;
+						grid-template-columns: repeat(auto-fill, 15rem);
+						grid-gap: 1rem;
+						align-items: center;
+						justify-items: center;
+					}
+				}
+			}
+		}
+	}
 `
 
 export default Container
