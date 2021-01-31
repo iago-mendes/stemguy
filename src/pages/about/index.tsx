@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import { GetStaticProps } from 'next'
 
@@ -6,6 +5,7 @@ import Container from '../../styles/pages/about/index'
 import logo from '../../assets/logo.svg'
 import { MemberListed } from '../../models/member'
 import api from '../../services/api'
+import SEOHead from '../../components/SEOHead'
 
 interface AboutProps
 {
@@ -16,9 +16,9 @@ const About: React.FC<AboutProps> = ({members}) =>
 {
 	return (
 		<Container className='page' >
-			<Head>
-				<title>About</title>
-			</Head>
+			<SEOHead
+				title='About | STEM Guy'
+			/>
 
 			<main>
 				<div className='logo'>

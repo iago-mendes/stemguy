@@ -1,14 +1,13 @@
-import Head from 'next/head'
-
 import Container from '../../styles/pages/policies/global'
+import SEOHead from '../../components/SEOHead'
 
 const TermsOfUse: React.FC = () =>
 {
 	return (
 		<Container className='page' >
-			<Head>
-				<title>Terms of Use | STEM Guy</title>
-			</Head>
+			<SEOHead
+				title='Terms of Use | STEM Guy'
+			/>
 
 			<main>
 				<h2>Website Terms of Use</h2>

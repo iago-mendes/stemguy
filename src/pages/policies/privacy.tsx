@@ -1,14 +1,13 @@
-import Head from 'next/head'
-
 import Container from '../../styles/pages/policies/global'
+import SEOHead from '../../components/SEOHead'
 
 const PrivacyPolicy: React.FC = () =>
 {
 	return (
 		<Container className='page' >
-			<Head>
-				<title>Privacy Policy | STEM Guy</title>
-			</Head>
+			<SEOHead
+				title='Privacy Policy | STEM Guy'
+			/>
 			
 			<main>
 				<h1>Privacy Policy for STEM Guy</h1>

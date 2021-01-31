@@ -1,5 +1,4 @@
 import {GetStaticProps} from 'next'
-import Head from 'next/head'
 import {useEffect, useState} from 'react'
 import useSWR from 'swr'
 import Image from 'next/image'
@@ -10,6 +9,7 @@ import Loading from '../components/Loading'
 import api from '../services/api'
 import logo from '../assets/logoDarked.svg'
 import Container from '../styles/pages/index'
+import SEOHead from '../components/SEOHead'
 
 interface Post
 {
@@ -68,14 +68,6 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	if (error)
 		console.log('[error while getting data]', error)
 
-	const meta =
-	{
-		title: 'STEM Guy | A blog about science and technology',
-		description: 'The STEM Guy blog is a place to read about science and technology.',
-		url: 'https://stemguy.club',
-		image: 'https://api.stemguy.club/public/logo.png'
-	}
-
 	function truncateText(text: string, length: number)
 	{
 		let truncated = text
@@ -88,26 +80,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 
 	return (
 		<Container>
-			<Head>
-				{/* Primary Meta Tags */}
-				<title>{meta.title}</title>
-				<meta name="title" content={meta.title} />
-				<meta name="description" content={meta.description} />
-
-				{/* Open Graph / Facebook */}
-				<meta property="og:type" content="website" />
-				<meta property="og:url" content={meta.url} />
-				<meta property="og:title" content={meta.title} />
-				<meta property="og:description" content={meta.description} />
-				<meta property="og:image" content={meta.image} />
-
-				{/* Twitter */}
-				<meta property="twitter:card" content="summary_large_image" />
-				<meta property="twitter:url" content={meta.url} />
-				<meta property="twitter:title" content={meta.title} />
-				<meta property="twitter:description" content={meta.description} />
-				<meta property="twitter:image" content={meta.image} />
-			</Head>
+			<SEOHead />
 
 			<header>
 				<div className='nameLogo'>

@@ -1,5 +1,4 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import Head from "next/head"
 import Image from 'next/image'
 import {FiCalendar, FiClock} from 'react-icons/fi'
 import Markdown from 'react-showdown'
@@ -12,6 +11,7 @@ import Img from '../components/Img'
 import Loading from '../components/Loading'
 import NotFound from './404'
 import Ad, {HorizontalAd} from '../components/Ad'
+import SEOHead from '../components/SEOHead'
 
 interface Post
 {
@@ -71,26 +71,11 @@ const Post: React.FC<PostProps> = ({post}) =>
 
 	return (
 		<Container inDesktop={inDesktop} className="page">
-			<Head>
-				{/* Primary Meta Tags */}
-				<title>{post.title} | STEM Guy</title>
-				<meta name="title" content={`${post.title} | STEM Guy`} />
-				<meta name="description" content={post.description} />
-
-				{/* Open Graph / Facebook */}
-				<meta property="og:type" content="website" />
-				<meta property="og:url" content="https://stemguy.club" />
-				<meta property="og:title" content={`${post.title} | STEM Guy`} />
-				<meta property="og:description" content={post.description} />
-				<meta property="og:image" content={post.image.url} />
-
-				{/* Twitter */}
-				<meta property="twitter:card" content="summary_large_image" />
-				<meta property="twitter:url" content="https://stemguy.club" />
-				<meta property="twitter:title" content={`${post.title} | STEM Guy`} />
-				<meta property="twitter:description" content={post.description} />
-				<meta property="twitter:image" content={post.image.url} />
-			</Head>
+			<SEOHead
+				title={`${post.title} | STEM Guy`}
+				description={post.description}
+				image={post.image.url}
+			/>
 
 			<header>
 				<h1>{post.title}</h1>
