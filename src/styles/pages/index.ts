@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-	position: relative;
-
 	overflow-y: auto;
 	overflow-x: hidden;
 
@@ -19,11 +17,7 @@ const Container = styled.div`
 
 		background-color: ${p => p.theme.colors.primary};
 
-		position: absolute;
-		z-index: 99;
-		left: 0;
-		top: 0;
-		right: 0;
+		position: relative;
 
 		.nameLogo
 		{
@@ -94,9 +88,9 @@ const Container = styled.div`
 
 	main
 	{
-		margin-top: 30vh;
-		padding: 5rem;
 		height: fit-content;
+		min-height: 70vh;
+		padding: 5rem;
 
 		display: grid;
 		grid-auto-rows: 30rem;
@@ -286,8 +280,6 @@ const Container = styled.div`
 
 		main
 		{
-			margin-top: calc(20vh + 5rem);
-
 			padding: 2rem;
 			padding-top: 4rem;
 		}
