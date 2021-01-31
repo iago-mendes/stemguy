@@ -1,7 +1,4 @@
 import Head from 'next/head'
-import getConfig from 'next/config'
-
-const {publicRuntimeConfig: env} = getConfig()
 
 interface SEOHeadProps
 {
@@ -16,7 +13,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({title, description, image}) =>
 	{
 		title: title ? title : 'STEM Guy | A blog about science and technology',
 		description: description ? description : 'The STEM Guy blog is a place to read about science and technology.',
-		image: image ? image : `${env.apiUrl}/assets/thumbnail.png`,
+		image: image ? image : `https://api.stemguy.club/assets/thumbnail.png`,
 		url: 'https://stemguy.club'
 	}
 
