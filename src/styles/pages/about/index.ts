@@ -104,7 +104,7 @@ const Container = styled.div`
 
 				.img
 				{
-					width: 40%;
+					width: 30rem;
 
 					img
 					{
@@ -115,10 +115,14 @@ const Container = styled.div`
 				.info
 				{
 					width: 50%;
+					height: 30rem;
 
 					display: flex;
 					flex-direction: column;
-					gap: 0.5rem;
+					justify-content: space-between;
+
+					padding-top: 2rem;
+					padding-bottom: 2rem;
 
 					h1
 					{
@@ -195,19 +199,22 @@ const Container = styled.div`
 				{
 					flex-direction: column;
 					margin: 0;
-
 					border-radius: 0;
-					background-image: none;
+
+					border-top-right-radius: 100rem;
+					border-top-left-radius: 100rem;
+					background-image: ${p => `linear-gradient(to bottom, ${p.theme.colors.primary}, ${p.theme.colors.background})`};
 				}
 
 				.img
 				{
-					width: 75%;
+					width: 100%;
 				}
 
 				.info
 				{
 					width: 100%;
+					height: fit-content;
 
 					gap: 1rem;
 					
