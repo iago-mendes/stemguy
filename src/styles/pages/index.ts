@@ -282,6 +282,8 @@ const Container = styled.div`
 		{
 			padding: 2rem;
 			padding-top: 4rem;
+
+			min-height: 80vh;
 		}
 	}
 `
