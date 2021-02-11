@@ -35,7 +35,7 @@ const About: React.FC<AboutProps> = ({members}) =>
 			<div className='team'>
 				<label>Meet our team</label>
 				<ul>
-					{members.map(member => (
+					{members.filter(({role}) => !['Guest Writer'].includes(role)).map(member => (
 						<div className='member' key={member.id}>
 							<div className='img'>
 								<Image src={member.image} width={1000} height={1000} layout='responsive'/>
@@ -43,6 +43,30 @@ const About: React.FC<AboutProps> = ({members}) =>
 							<div className='info'>
 								<h1>{member.name}</h1>
 								<h2>{member.role}</h2>
+								<p>{member.bio}</p>
+								<div className='topics'>
+									{member.favTopics.map((topic, index) => (
+										<span key={index} >
+											{topic}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
+					))}
+				</ul>
+			</div>
+
+			<div className='team'>
+				<label>Guest Writers</label>
+				<ul>
+					{members.filter(({role}) => role === 'Guest Writer').map(member => (
+						<div className='member' key={member.id}>
+							<div className='img'>
+								<Image src={member.image} width={1000} height={1000} layout='responsive'/>
+							</div>
+							<div className='info'>
+								<h1>{member.name}</h1>
 								<p>{member.bio}</p>
 								<div className='topics'>
 									{member.favTopics.map((topic, index) => (
