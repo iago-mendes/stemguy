@@ -22,16 +22,16 @@ const Container = styled.footer`
 		align-items: center;
 		gap: 1rem;
 
-		width: 40rem;
+		width: 40%;
 
 		.icon
 		{
-			width: 15rem;
+			width: 30%;
 		}
 
 		.name
 		{
-			width: 30rem;
+			width: 75%;
 		}
 	}
 
@@ -119,6 +119,21 @@ const Container = styled.footer`
 					}
 				}
 			}
+		}
+	}
+
+	@media(max-width: 700px)
+	{
+		flex-direction: column;
+
+		.logos
+		{
+			width: 100%;
+		}
+
+		.links
+		{
+			width: 90%;
 		}
 	}
 `
