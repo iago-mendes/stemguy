@@ -9,6 +9,8 @@ import Loading from '../components/Loading'
 import api from '../services/api'
 import Container from '../styles/pages/index'
 import SEOHead from '../components/SEOHead'
+import icon from '../assets/logos/icon-darked.svg'
+import name from '../assets/logos/name.svg'
 
 interface Post
 {
@@ -84,10 +86,10 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 			<header>
 				<div className='logos'>
 					<div className='icon'>
-						<Image src='/logo-darked.svg' alt='STEM Guy icon' width={1000} height={1000} layout='responsive' />
+						<Image src={icon} alt='STEM Guy icon' width={1000} height={1000} layout='responsive' />
 					</div>
 					<div className='name'>
-						<Image src='/logo-name.svg' alt='STEM Guy' width={1000} height={250} layout='responsive' />
+						<Image src={name} alt='STEM Guy' width={1000} height={250} layout='responsive' />
 					</div>
 				</div>
 				<div className='input'>

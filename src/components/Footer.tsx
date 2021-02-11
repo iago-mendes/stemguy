@@ -4,6 +4,8 @@ import {useRouter} from 'next/router'
 import {FiInstagram, FiTwitter} from 'react-icons/fi'
 
 import Container from '../styles/components/Footer'
+import icon from '../assets/logos/icon-darked.svg'
+import name from '../assets/logos/name.svg'
 
 const Footer: React.FC = () =>
 {
@@ -17,10 +19,10 @@ const Footer: React.FC = () =>
 				onClick={() => push('/')}
 			>
 				<div className='icon'>
-					<Image src='/logo-darked' alt='STEM Guy icon' width={1000} height={1000} layout='responsive' />
+					<Image src={icon} alt='STEM Guy icon' width={1000} height={1000} layout='responsive' />
 				</div>
 				<div className='name'>
-					<Image src='/logo-name' alt='STEM Guy' width={1000} height={250} layout='responsive' />
+					<Image src={name} alt='STEM Guy' width={1000} height={250} layout='responsive' />
 				</div>
 			</div>
 			<div className='links'>
