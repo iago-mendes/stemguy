@@ -7,7 +7,6 @@ import {useRouter} from 'next/router'
 
 import Loading from '../components/Loading'
 import api from '../services/api'
-import logo from '../assets/logoDarked.svg'
 import Container from '../styles/pages/index'
 import SEOHead from '../components/SEOHead'
 
@@ -83,10 +82,12 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 			<SEOHead />
 
 			<header>
-				<div className='nameLogo'>
-					<h1>STEM Guy</h1>
-					<div className="img">
-						<Image src={logo} alt='STEM Guy' width={300} height={300} layout='intrinsic' priority />
+				<div className='logos'>
+					<div className='icon'>
+						<Image src='/logo-darked.svg' alt='STEM Guy icon' width={1000} height={1000} layout='responsive' />
+					</div>
+					<div className='name'>
+						<Image src='/logo-name.svg' alt='STEM Guy' width={1000} height={250} layout='responsive' />
 					</div>
 				</div>
 				<div className='input'>

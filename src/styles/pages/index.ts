@@ -19,31 +19,26 @@ const Container = styled.div`
 
 		position: relative;
 
-		.nameLogo
+		.logos
 		{
 			display: flex;
 			align-items: center;
-			justify-content: space-around;
+			justify-content: center;
+			gap: 15rem;
 
 			width: 100%;
 			height: 85%;
 
-			h1
-			{
-				font-size: 6rem;
-				font-family: Aladin;
-
-				color: ${p => p.theme.colors.background};
-			}
-
-			.img
+			.icon
 			{
 				height: 90%;
 				width: calc(30vh * 0.85 * 0.9);
+			}
 
-				display: flex;
-				align-items: center;
-				justify-content: center;
+			.name
+			{
+				height: 50%;
+				width: calc(30vh * 0.85 * 0.5 * 1000/250);
 			}
 		}
 
@@ -243,16 +238,18 @@ const Container = styled.div`
 		{
 			height: 20vh;
 
-			.nameLogo
+			.logos
 			{
-				h1
-				{
-					font-size: 4rem;
-				}
+				gap: 1rem;
 
-				.img
+				.icon
 				{
 					width: calc(20vh * 0.85 * 0.9);
+				}
+
+				.name
+				{
+					width: calc(20vh * 0.85 * 0.5 * 1000/250);
 				}
 			}
 
