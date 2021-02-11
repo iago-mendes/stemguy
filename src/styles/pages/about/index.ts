@@ -169,6 +169,44 @@ const Container = styled.div`
 		}
 	}
 
+	.links
+	{
+		width: 100%;
+		padding: 5rem;
+
+		display: grid;
+		grid-auto-rows: 5rem;
+		grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+		grid-gap: 2rem;
+		align-items: center;
+		justify-items: center;
+
+		a
+		{
+			font-size: 2.5rem;
+			font-family: Ubuntu;
+			color: ${p => p.theme.colors.text};
+			text-decoration: none;
+
+			cursor: pointer;
+
+			::after
+			{
+				content: '';
+				width: 0px;
+				height: 3px;
+				display: block;
+				background: ${p => p.theme.colors.text};
+				transition: 0.25s;
+			}
+
+			:hover::after
+			{
+				width: 100%;
+			}
+		}
+	}
+
 	@media(max-width: 1100px)
 	{
 		main
@@ -231,6 +269,11 @@ const Container = styled.div`
 					}
 				}
 			}
+		}
+
+		.links
+		{
+			padding: 2rem;
 		}
 	}
 `

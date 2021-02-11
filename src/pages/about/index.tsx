@@ -6,6 +6,7 @@ import logo from '../../assets/logo.svg'
 import { MemberListed } from '../../models/member'
 import api from '../../services/api'
 import SEOHead from '../../components/SEOHead'
+import Link from 'next/link'
 
 interface AboutProps
 {
@@ -79,6 +80,18 @@ const About: React.FC<AboutProps> = ({members}) =>
 						</div>
 					))}
 				</ul>
+			</div>
+			
+			<div className='links'>
+				<Link href='/about/privacy-policy'>
+					Privacy Policy
+				</Link>
+				<Link href='/about/terms-of-use'>
+					Terms of Use
+				</Link>
+				<Link href='/about/disclaimer'>
+					Disclaimer
+				</Link>
 			</div>
 		</Container>
 	)
