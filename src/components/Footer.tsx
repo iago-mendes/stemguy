@@ -1,19 +1,26 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import {useRouter} from 'next/router'
 import {FiInstagram, FiTwitter} from 'react-icons/fi'
 
 import Container from '../styles/components/Footer'
 
 const Footer: React.FC = () =>
 {
+	const {push} = useRouter()
+
 	return (
 		<Container>
-			<div className='logos'>
+			<div
+				className='logos'
+				title='Home'
+				onClick={() => push('/')}
+			>
 				<div className='icon'>
-					<Image src='/logo-darked.svg' alt='STEM Guy icon' width={1000} height={1000} layout='responsive' />
+					<Image src='/logo-darked' alt='STEM Guy icon' width={1000} height={1000} layout='responsive' />
 				</div>
 				<div className='name'>
-					<Image src='/logo-name.svg' alt='STEM Guy' width={1000} height={250} layout='responsive' />
+					<Image src='/logo-name' alt='STEM Guy' width={1000} height={250} layout='responsive' />
 				</div>
 			</div>
 			<div className='links'>

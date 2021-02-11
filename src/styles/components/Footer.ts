@@ -24,6 +24,14 @@ const Container = styled.footer`
 
 		width: 40%;
 
+		cursor: pointer;
+		transition: 0.25s;
+
+		:hover
+		{
+			transform: scale(1.05);
+		}
+
 		.icon
 		{
 			width: 30%;
