@@ -1,4 +1,4 @@
-import Container from '../../styles/pages/policies/global'
+import Container from '../../styles/pages/about/global'
 import SEOHead from '../../components/SEOHead'
 
 const PrivacyPolicy: React.FC = () =>
