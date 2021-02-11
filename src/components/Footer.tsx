@@ -13,7 +13,7 @@ const Footer: React.FC = () =>
 					<a className='link' >Home</a>
 				</Link>
 				<Link href='/about' >
-					<a className='link' >About us</a>
+					<a className='link' >About</a>
 				</Link>
 				<Link href='/policies/privacy' >
 					<a className='link' >Privacy policy</a>
