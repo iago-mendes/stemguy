@@ -11,6 +11,7 @@ import Container from '../styles/pages/index'
 import SEOHead from '../components/SEOHead'
 import icon from '../assets/logos/icon-darked.svg'
 import name from '../assets/logos/name.svg'
+import GridPaginate from '../components/GridPaginate'
 
 interface Post
 {
@@ -41,7 +42,12 @@ interface HomeProps
 const Home: React.FC<HomeProps> = ({staticPosts}) =>
 {
 	const Router = useRouter()
+
 	const [search, setSearch] = useState('')
+	const [page, setPage]	= useState(1)
+	const [totalPages, setTotalPages] = useState(1)
+	const [loading, setLoading] = useState(false)
+
 	const [posts, setPosts] = useState<Post[]>([])
 	const {data, error} = useSWR(`/api/search?q=${search}`)
 	
@@ -98,42 +104,36 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 				</div>
 			</header>
 
-			{
-				!data && search !== ''
-				? <Loading style={{height: '70vh', marginTop: '30vh'}} />
-				: posts.length === 0 && search !== ''
-					? (
-						<div className="noResults">
-							<h1>No results found!</h1>
+			<GridPaginate
+				page={page}
+				setPage={setPage}
+				totalPages={totalPages}
+				loading={loading}
+				noResults={posts.length === 0}
+			>
+				{posts.map(post => (
+					<div className='post' key={post.id} onClick={() => Router.push(`/${post.url_id}`)}>
+						<div className='img'>
+							<Image
+								src={post.image.url}
+								alt={post.image.alt}
+								width={post.image.width}
+								height={post.image.height}
+								layout='responsive'
+							/>
 						</div>
-					)
-					: (
-						<main>
-							{posts.map(post => (
-								<div className="post" key={post.id} onClick={() => Router.push(`/${post.url_id}`)}>
-									<div className="img">
-										<Image
-											src={post.image.url}
-											alt={post.image.alt}
-											width={post.image.width}
-											height={post.image.height}
-											layout='responsive'
-										/>
-									</div>
-									<h1>{truncateText(post.title, 45)}</h1>
-									<p>{truncateText(post.description, 225)}</p>
-									<div className="scroll">
-										<ul>
-											{post.flags.map(flag => (
-												<li key={flag.name} style={{backgroundColor: flag.color}} >{flag.name}</li>
-											))}
-										</ul>
-									</div>
-								</div>
-							))}
-						</main>
-					)
-			}
+						<h1>{truncateText(post.title, 45)}</h1>
+						<p>{truncateText(post.description, 225)}</p>
+						<div className='scroll'>
+							<ul>
+								{post.flags.map(flag => (
+									<li key={flag.name} style={{backgroundColor: flag.color}} >{flag.name}</li>
+								))}
+							</ul>
+						</div>
+					</div>
+				))}
+			</GridPaginate>
 		</Container>
 	)
 }
