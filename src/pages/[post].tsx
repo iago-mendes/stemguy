@@ -12,31 +12,7 @@ import Loading from '../components/Loading'
 import NotFound from './404'
 import Ad, {HorizontalAd} from '../components/Ad'
 import SEOHead from '../components/SEOHead'
-
-interface Post
-{
-	title: string
-	date: string
-	time: number
-	author:
-	{
-		name: string
-		role: string
-		image: string
-	}
-	description: string
-	image:
-	{
-		url: string
-		alt: string
-		credit?: string
-		creditLink?: string
-		width: number
-		height: number
-	}
-	markdown: string
-	flags: Array<{name: string, color: string}>
-}
+import Post from '../models/post'
 
 interface PostProps
 {

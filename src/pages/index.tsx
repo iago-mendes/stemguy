@@ -11,27 +11,7 @@ import SEOHead from '../components/SEOHead'
 import icon from '../assets/logos/icon-darked.svg'
 import name from '../assets/logos/name.svg'
 import GridPaginate from '../components/GridPaginate'
-
-interface Post
-{
-	id: string
-	url_id: string
-	title: string
-	description: string
-	date: Date
-	image:
-	{
-		url: string
-		alt: string
-		width: number
-		height: number
-	}
-	flags: Array<
-	{
-		name: string
-		color: string
-	}>
-}
+import {PostListed as Post} from '../models/post'
 
 interface HomeProps
 {
