@@ -12,6 +12,7 @@ import icon from '../assets/logos/icon-darked.svg'
 import name from '../assets/logos/name.svg'
 import GridPaginate from '../components/GridPaginate'
 import {PostListed as Post} from '../models/post'
+import PostCard from '../components/PostCard'
 
 interface HomeProps
 {
@@ -83,16 +84,6 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	if (error)
 		console.log('[error while getting data]', error)
 
-	function truncateText(text: string, length: number)
-	{
-		let truncated = text
-
-		if (truncated.length > length)
-			truncated = truncated.substr(0, length) + '...';
-
-		return truncated;
-	}
-
 	return (
 		<Container>
 			<SEOHead />
@@ -120,26 +111,10 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 				noResults={posts.length === 0}
 			>
 				{posts.map(post => (
-					<div className='post' key={post.id} onClick={() => Router.push(`/${post.url_id}`)}>
-						<div className='img'>
-							<Image
-								src={post.image.url}
-								alt={post.image.alt}
-								width={post.image.width}
-								height={post.image.height}
-								layout='responsive'
-							/>
-						</div>
-						<h1>{truncateText(post.title, 45)}</h1>
-						<p>{truncateText(post.description, 225)}</p>
-						<div className='scroll'>
-							<ul>
-								{post.flags.map(flag => (
-									<li key={flag.name} style={{backgroundColor: flag.color}} >{flag.name}</li>
-								))}
-							</ul>
-						</div>
-					</div>
+					<PostCard
+						post={post}
+						key={post.id}
+					/>
 				))}
 			</GridPaginate>
 		</Container>
