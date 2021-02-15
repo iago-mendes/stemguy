@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import {PostListed} from '../models/post'
 import Container from '../styles/components/PostCard'
@@ -21,26 +22,31 @@ const PostCard: React.FC<PostCardProps> = ({post}) =>
 	}
 
 	return (
-		<Container>
-			<div className='img'>
-				<Image
-					src={post.image.url}
-					alt={post.image.alt}
-					width={post.image.width}
-					height={post.image.height}
-					layout='responsive'
-				/>
-			</div>
-			<h1>{truncateText(post.title, 45)}</h1>
-			<p>{truncateText(post.description, 225)}</p>
-			<div className='scroll'>
-				<ul>
-					{post.flags.map(flag => (
-						<li key={flag.name} style={{backgroundColor: flag.color}} >{flag.name}</li>
-					))}
-				</ul>
-			</div>
-		</Container>
+		<Link href={`/${post.url_id}`} >
+			<Container
+			 as='a'
+			 href={`/${post.url_id}`}
+			>
+				<div className='img'>
+					<Image
+						src={post.image.url}
+						alt={post.image.alt}
+						width={post.image.width}
+						height={post.image.height}
+						layout='responsive'
+					/>
+				</div>
+				<h1>{truncateText(post.title, 45)}</h1>
+				<p>{truncateText(post.description, 225)}</p>
+				<div className='scroll'>
+					<ul>
+						{post.flags.map(flag => (
+							<li key={flag.name} style={{backgroundColor: flag.color}} >{flag.name}</li>
+						))}
+					</ul>
+				</div>
+			</Container>
+		</Link>
 	)
 }
 

@@ -15,6 +15,9 @@ const Container = styled.div`
 	padding: 1rem;
 	border-radius: 2rem;
 
+	text-decoration: none;
+	color: ${p => p.theme.colors.text};
+
 	cursor: pointer;
 	transition: 0.25s;
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
