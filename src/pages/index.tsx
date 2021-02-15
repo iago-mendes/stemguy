@@ -5,7 +5,6 @@ import Image from 'next/image'
 import {FaSearch} from 'react-icons/fa'
 import {useRouter} from 'next/router'
 
-import Loading from '../components/Loading'
 import api from '../services/api'
 import Container from '../styles/pages/index'
 import SEOHead from '../components/SEOHead'
