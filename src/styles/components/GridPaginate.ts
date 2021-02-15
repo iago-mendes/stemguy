@@ -118,13 +118,6 @@ const Container = styled.div`
 	
 	@media(max-width: 600px)
 	{
-		
-		main
-		{
-			grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-			grid-auto-rows: calc((30rem - 2rem) * 0.3 * 1.5 + 2rem);
-		}
-		
 		.paginate
 		{
 			gap: 1rem;
