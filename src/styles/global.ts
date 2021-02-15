@@ -12,6 +12,7 @@ export default createGlobalStyle`
 		padding: 0;
 		box-sizing: border-box;
 		-webkit-tap-highlight-color: transparent;
+		outline: none;
 	}
 
 	body
