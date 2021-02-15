@@ -12,11 +12,11 @@ import Loading from '../components/Loading'
 import NotFound from './404'
 import Ad, {HorizontalAd} from '../components/Ad'
 import SEOHead from '../components/SEOHead'
-import Post from '../models/post'
+import PostInterface from '../models/post'
 
 interface PostProps
 {
-	post: Post
+	post: PostInterface
 }
 
 const Post: React.FC<PostProps> = ({post}) =>
@@ -126,7 +126,7 @@ export const getStaticPaths: GetStaticPaths = async () =>
 export const getStaticProps: GetStaticProps = async ctx =>
 {
 	const {post: urlId} = ctx.params
-	let post: Post = null
+	let post: PostInterface = null
 
 	await api.get(`posts/${urlId}`)
 	.then(({data}) => post = data)
