@@ -49,7 +49,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 	const [loading, setLoading] = useState(false)
 
 	const [posts, setPosts] = useState<Post[]>([])
-	const {data, error} = useSWR(`/api/search?q=${search}`)
+	const {data, error, revalidate} = useSWR(`/api/posts?search=${search}&page=${page}`)
 	
 	useEffect(() =>
 	{
@@ -63,14 +63,43 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 
 	useEffect(() =>
 	{
-		if (search === '' || error)
+		if (data)
 		{
-			let tmp = staticPosts
-			tmp.sort((a,b) => a.date < b.date ? 1 : -1)
-			setPosts(tmp)
+			setPosts(data.posts)
+			setPage(data.paginate.page)
+			setTotalPages(data.paginate.total)
 		}
-		else if (data) setPosts(data.posts)
-	}, [data, error, search, staticPosts])
+		else if (error)
+		{
+			setPosts(staticPosts)
+			setPage(1)
+			setTotalPages(1)
+
+			console.error(error)
+		}
+	}, [data, error])
+
+	useEffect(() =>
+	{
+		revalidate()
+
+		if (search === '' && page === 1)
+			setPosts(staticPosts)
+		else
+			setLoading(true)
+	}, [search, page])
+
+	useEffect(() =>
+	{
+		setLoading(false)
+	}, [posts])
+
+	useEffect(() =>
+	{
+		setPage(1)
+		if (search !== '')
+			setTotalPages(1)
+	}, [search])
 
 	if (error)
 		console.log('[error while getting data]', error)
