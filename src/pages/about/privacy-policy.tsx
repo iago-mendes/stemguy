@@ -12,9 +12,9 @@ const PrivacyPolicy: React.FC = () =>
 			<main>
 				<h1>Privacy Policy for STEM Guy</h1>
 
-				<p>At STEM Guy, accessible from stemguy.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by STEM Guy and how we use it.</p>
+				<p>At STEM Guy, accessible from stemguy.club, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by STEM Guy and how we use it.</p>
 
-				<p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at <strong>contact@stemguy.com</strong>.</p>
+				<p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at <strong>contact@stemguy.club</strong>.</p>
 
 				<h2>Log Files</h2>
 
