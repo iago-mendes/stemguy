@@ -17,7 +17,7 @@ const Container = styled.nav<ContainerProps>`
 	padding-left: 2rem;
 	padding-right: 2rem;
 
-	.logo
+	.logos
 	{
 		display: flex;
 		align-items: center;
@@ -26,7 +26,7 @@ const Container = styled.nav<ContainerProps>`
 		cursor: pointer;
 		transition: 0.25s;
 
-		.img
+		.icon
 		{
 			height: 4rem;
 			width: 4rem;
@@ -36,14 +36,11 @@ const Container = styled.nav<ContainerProps>`
 			border-radius: 100rem;
 		}
 
-		span
+		.name
 		{
-			font-size: 3rem;
-			font-family: Aladin;
-
-			color: ${p => p.theme.colors.background};
+			height: 3.5rem;
 		}
-		
+
 		:hover
 		{
 			transform: scale(1.07);

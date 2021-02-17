@@ -18,12 +18,8 @@ const Footer: React.FC = () =>
 				title='Home'
 				onClick={() => push('/')}
 			>
-				<div className='icon'>
-					<Image src={icon} alt='STEM Guy icon' width={1000} height={1000} layout='responsive' />
-				</div>
-				<div className='name'>
-					<Image src={name} alt='STEM Guy' width={1000} height={250} layout='responsive' />
-				</div>
+				<img src={icon} alt='STEM Guy icon' className='icon' />
+				<img src={name} alt='STEM Guy' className='name' />
 			</div>
 			<div className='links'>
 				<div className='group'>

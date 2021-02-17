@@ -1,10 +1,11 @@
 import {FormEvent, useEffect, useState} from 'react'
 import {FaSearch} from 'react-icons/fa'
 import {useRouter} from 'next/router'
-import Image from 'next/image'
+import Link from 'next/link'
 
 import Container from '../styles/components/Menu'
-import logo from '../assets/logo.svg'
+import icon from '../assets/logos/icon-darked.svg'
+import name from '../assets/logos/name.svg'
 
 const Menu: React.FC = () =>
 {
@@ -54,12 +55,15 @@ const Menu: React.FC = () =>
 			isSearchExpanded={isSearchExpanded}
 			title='Home'
 		>
-			<div className='logo' onClick={() => Router.push('/')} >
-				<div className='img'>
-					<Image src={logo} alt='STEM Guy' width={100} height={100} layout='responsive' />
+			<Link href='/' >
+				<div
+					className='logos'
+					title='Home'
+				>
+					<img src={icon} alt='STEM Guy icon' className='icon' />
+					<img src={name} alt='STEM Guy' className='name' />
 				</div>
-				<span>STEM Guy</span>
-			</div>
+			</Link>
 
 			<form
 				title='Search'
