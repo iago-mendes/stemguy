@@ -22,10 +22,10 @@ const PostCard: React.FC<PostCardProps> = ({post}) =>
 	}
 
 	return (
-		<Link href={`/${post.url_id}`} >
+		<Link href={`/p/${post.url_id}`} >
 			<Container
 			 as='a'
-			 href={`/${post.url_id}`}
+			 href={`/p/${post.url_id}`}
 			>
 				<div className='img'>
 					<Image

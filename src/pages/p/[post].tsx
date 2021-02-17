@@ -5,14 +5,14 @@ import Markdown from 'react-showdown'
 import {useRouter} from 'next/router'
 import {useEffect, useState} from 'react'
 
-import api from '../services/api'
-import Container from '../styles/pages/[post]'
-import Img from '../components/Img'
-import Loading from '../components/Loading'
-import NotFound from './404'
-import Ad, {HorizontalAd} from '../components/Ad'
-import SEOHead from '../components/SEOHead'
-import PostInterface from '../models/post'
+import api from '../../services/api'
+import Container from '../../styles/pages/[post]'
+import Img from '../../components/Img'
+import Loading from '../../components/Loading'
+import NotFound from '../404'
+import Ad, {HorizontalAd} from '../../components/Ad'
+import SEOHead from '../../components/SEOHead'
+import PostInterface from '../../models/post'
 
 interface PostProps
 {
