@@ -50,9 +50,9 @@ const GridPaginate: React.FC<GridPaginateProps> = ({page, setPage, totalPages, l
 							</div>
 						)
 						: (
-							<main>
+							<nav>
 								{children}
-							</main>
+							</nav>
 						)
 			}
 			<div className='paginate'>
