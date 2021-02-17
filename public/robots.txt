@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stemguy.club/sitemap.xml
