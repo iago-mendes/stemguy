@@ -108,7 +108,7 @@ const Home: React.FC<HomeProps> = ({staticPosts}) =>
 				setPage={setPage}
 				totalPages={totalPages}
 				loading={loading}
-				noResults={posts.length === 0}
+				noResults={posts.length === 0 && search !== ''}
 			>
 				{posts.map(post => (
 					<PostCard

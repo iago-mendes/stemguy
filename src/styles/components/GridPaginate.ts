@@ -8,7 +8,7 @@ const Container = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	
-	nav
+	main
 	{
 		width: 100%;
 		display: grid;
