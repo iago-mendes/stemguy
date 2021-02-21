@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react'
-import useDimensions from '../hooks/useDimensions'
-
 import Container from '../styles/components/Ad'
+import useDimensions from '../hooks/useDimensions'
 
 interface AdProps
 {

@@ -10,7 +10,7 @@ import useDimensions from '../hooks/useDimensions'
 
 const Menu: React.FC = () =>
 {
-	const Router = useRouter()
+	const {pathname, push} = useRouter()
 	const {inMobile} = useDimensions()
 	
 	const [search, setSearch] = useState('')
@@ -19,9 +19,9 @@ const Menu: React.FC = () =>
 
 	useEffect(() =>
 	{
-		const tmp = Router.pathname.split('/')[1]
-		setPage(tmp)
-	}, [Router])
+		const tmpPage = pathname.split('/')[1]
+		setPage(tmpPage)
+	}, [pathname])
 
 	function handleExpandSearch(hasEntered: boolean)
 	{
@@ -39,7 +39,7 @@ const Menu: React.FC = () =>
 		e.preventDefault()
 
 		setIsSearchExpanded(false)
-		Router.push(`/?search=${search}`)
+		push(`/?search=${search}`)
 		setSearch('')
 	}
 
