@@ -7,11 +7,12 @@ import Container from '../styles/components/Menu'
 import icon from '../assets/logos/icon-darked.svg'
 import name from '../assets/logos/name.svg'
 import useDimensions from '../hooks/useDimensions'
+import SearchModal from './modals/Search'
 
 const Menu: React.FC = () =>
 {
 	const {pathname, push} = useRouter()
-	const {inMobile} = useDimensions()
+	const {inMobile, inDesktop} = useDimensions()
 	
 	const [search, setSearch] = useState('')
 	const [isSearchExpanded, setIsSearchExpanded] = useState(false)
@@ -23,16 +24,7 @@ const Menu: React.FC = () =>
 		setPage(tmpPage)
 	}, [pathname])
 
-	function handleExpandSearch(hasEntered: boolean)
-	{
-		if (inMobile)
-			return setIsSearchExpanded(false)
-
-		if (hasEntered)
-			setIsSearchExpanded(true)
-		else
-			setIsSearchExpanded(false)
-	}
+	useEffect(() => console.log('[isSearchExpanded && inDesktop]', isSearchExpanded && inDesktop), [isSearchExpanded])
 
 	function handleSearchSubmit(e: FormEvent)
 	{
@@ -48,9 +40,14 @@ const Menu: React.FC = () =>
 
   return (
 		<Container
-			isSearchExpanded={isSearchExpanded}
+			isSearchExpanded={isSearchExpanded && inDesktop}
 			title='Home'
 		>
+			<SearchModal
+				isOpen={isSearchExpanded && inMobile}
+				setIsOpen={setIsSearchExpanded}
+			/>
+
 			<Link href='/' >
 				<div
 					className='logos'
@@ -64,11 +61,13 @@ const Menu: React.FC = () =>
 			<form
 				title='Search'
 				onSubmit={handleSearchSubmit}
-				onMouseEnter={() => handleExpandSearch(true)}
-				onMouseLeave={() => handleExpandSearch(false)}
+
+				onMouseEnter={() => inDesktop && setIsSearchExpanded(true)}
+				onMouseLeave={() => inDesktop && setIsSearchExpanded(false)}
+				onClick={() => inMobile && setIsSearchExpanded(true)}
 			>
 				<FaSearch size={25} className='searchIcon' />
-				{(isSearchExpanded && !inMobile) && (
+				{(isSearchExpanded && inDesktop) && (
 					<input
 						autoFocus
 						value={search}
