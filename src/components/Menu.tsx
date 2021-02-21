@@ -64,7 +64,7 @@ const Menu: React.FC = () =>
 				onMouseLeave={() => inDesktop && setIsSearchExpanded(false)}
 				onClick={() => inMobile && setIsSearchExpanded(true)}
 			>
-				<FaSearch size={25} className='searchIcon' />
+				<FaSearch size={20} className='searchIcon' />
 				{(isSearchExpanded && inDesktop) && (
 					<input
 						autoFocus

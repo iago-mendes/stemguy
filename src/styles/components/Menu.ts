@@ -55,10 +55,10 @@ const Container = styled.nav<ContainerProps>`
 
 		display: flex;
 		align-items: center;
-		justify-content: flex-start;
+		justify-content: ${p => p.isSearchExpanded ? 'flex-start' : 'center'};
 
-		padding-right: 1rem;
-		padding-left: 1rem;
+		padding-right: ${p => p.isSearchExpanded ? '1rem' : 0};
+		padding-left: ${p => p.isSearchExpanded ? '1rem' : 0};
 		gap: 0.5rem;
 
 		height: 3.5rem;

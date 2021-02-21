@@ -1,7 +1,7 @@
 import Modal from 'react-modal'
 import {FormEvent, useState} from 'react'
 import {useRouter} from 'next/router'
-import {FiX} from 'react-icons/fi'
+import {FiX, FiSend} from 'react-icons/fi'
 import {FaSearch} from 'react-icons/fa'
 
 import Container from '../../styles/components/modals/Search'
@@ -51,7 +51,8 @@ const SearchModal: React.FC<SearchModalProps> = ({isOpen, setIsOpen}) =>
 				</form>
 
 				<button className='submit' onClick={handleSubmit} >
-					See results
+					<FiSend size={25} />
+					<span>See results</span>
 				</button>
 			</Container>
 		</Modal>
