@@ -136,7 +136,7 @@ const Container = styled.footer`
 
 		.logos
 		{
-			width: 100%;
+			width: 90%;
 		}
 
 		.links
