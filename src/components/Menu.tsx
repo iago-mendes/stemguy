@@ -24,8 +24,6 @@ const Menu: React.FC = () =>
 		setPage(tmpPage)
 	}, [pathname])
 
-	useEffect(() => console.log('[isSearchExpanded && inDesktop]', isSearchExpanded && inDesktop), [isSearchExpanded])
-
 	function handleSearchSubmit(e: FormEvent)
 	{
 		e.preventDefault()
