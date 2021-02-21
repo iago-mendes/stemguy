@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import useDimensions from '../hooks/useDimensions'
 
 import Container from '../styles/components/Ad'
 
@@ -25,12 +26,12 @@ const Ad: React.FC<AdProps> = ({width,height}) =>
 
 export const HorizontalAd: React.FC = () =>
 {
-	const [inMobile, setInMobile] = useState(false)
+	const {width} = useDimensions()
 
-	useEffect(() => setInMobile(window.innerWidth < 800), [])
-
-	if (inMobile) return <Ad width={300} height={100} />
-	else return <Ad width={728} height={90} />
+	if (width < 800)
+		return <Ad width={300} height={100} />
+	else
+		return <Ad width={728} height={90} />
 }
 
 export default Ad

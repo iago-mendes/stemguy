@@ -3,7 +3,6 @@ import Image from 'next/image'
 import {FiCalendar, FiClock} from 'react-icons/fi'
 import Markdown from 'react-showdown'
 import {useRouter} from 'next/router'
-import {useEffect, useState} from 'react'
 
 import api from '../../services/api'
 import Container from '../../styles/pages/[post]'
@@ -13,6 +12,7 @@ import NotFound from '../404'
 import Ad, {HorizontalAd} from '../../components/Ad'
 import SEOHead from '../../components/SEOHead'
 import PostInterface from '../../models/post'
+import useDimensions from '../../hooks/useDimensions'
 
 interface PostProps
 {
@@ -21,18 +21,14 @@ interface PostProps
 
 const Post: React.FC<PostProps> = ({post}) =>
 {
-	const {isFallback, } = useRouter()
-	const [inDesktop, setInDesktop] = useState(false)
+	const {isFallback} = useRouter()
+	const {inDesktop} = useDimensions()
+	
 
 	if (isFallback)
 		return <Loading />
 	else if(!post)
 		return <NotFound />
-
-	useEffect(() =>
-	{
-		setInDesktop(window.innerWidth >= 1270)
-	}, [])
 
 	function formatDate(hash: string)
 	{

@@ -6,20 +6,16 @@ import Link from 'next/link'
 import Container from '../styles/components/Menu'
 import icon from '../assets/logos/icon-darked.svg'
 import name from '../assets/logos/name.svg'
+import useDimensions from '../hooks/useDimensions'
 
 const Menu: React.FC = () =>
 {
 	const Router = useRouter()
+	const {inMobile} = useDimensions()
 	
 	const [search, setSearch] = useState('')
 	const [isSearchExpanded, setIsSearchExpanded] = useState(false)
-	const [inMobile, setInMobile] = useState(false)
 	const [page, setPage] = useState('')
-
-	useEffect(() =>
-	{
-		setInMobile(window.innerWidth <= 1100)
-	}, [])
 
 	useEffect(() =>
 	{
